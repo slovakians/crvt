@@ -3,81 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <title>Purukees | Developer Portfolio</title>
+    <title>Your Name - Space Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="parallax"></div>
     <header>
-        <a href="#" class="logo">Purukees</a>
         <nav>
-            <a href="#" class="active">Home</a>
-            <a href="https://youtube.com/@ShadBg">YouTube</a>
-            <a href="https://github.com/slovakians">GitHub</a>
-            <a href="https://discord.gg/cYPcNeJsNF">Discord</a>
+            <h1>Your Name</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
     </header>
 
-    <section class="home">
-        <div class="home-img">
-            <img src="main.jpg" alt="Profile Image">
-        </div>
-        <div class="home-content">
-            <h1>Hi, It's <span>Purukees</span></h1>
-            <h3 class="typing-text">I'm a <span>Node.js & Python Developer</span></h3>
-            <p>Creator of Mishua and owner of DupeCraftMC. I develop bots that use slash commands, and I am a skilled developer working with Node.js, Python, and Minecraft development.</p>
-            <div class="social-icons">
-                <a href="https://youtube.com/@ShadBg"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://github.com/slovakians"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <a href="https://discord.gg/cYPcNeJsNF" class="btn">Join Discord</a>
-        </div>
+    <section id="home" class="content">
+        <h2>Welcome to My Space Portfolio</h2>
+        <p>Hi, I'm [Your Name], a developer specializing in Node.js, Python, and Spigot plugins.</p>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="content">
         <h2>Projects</h2>
         <div class="project">
-            <h3>Mishua Bot</h3>
-            <p>A feature-rich Discord bot utilizing Node.js, handling various functionalities with efficient slash commands.</p>
-            <a href="https://github.com/slovakians/mishua" target="_blank">View on GitHub</a>
+            <h3>Project Title</h3>
+            <p>Description of the project.</p>
+            <a href="#">View Project</a>
         </div>
-        <div class="project">
-            <h3>DupeCraftMC</h3>
-            <p>A Minecraft server plugin developed with Java, offering custom game mechanics and enhanced player experience.</p>
-            <a href="https://github.com/slovakians/dupecraftmc" target="_blank">View on GitHub</a>
-        </div>
+        <!-- Add more projects as needed -->
     </section>
 
-    <section id="skills">
+    <section id="skills" class="content">
         <h2>Skills</h2>
-        <ul>
-            <li>Node.js</li>
-            <li>Python</li>
-            <li>Minecraft Plugin Development (Spigot/Bukkit)</li>
-            <li>Express.js, Django</li>
-        </ul>
+        <p>Node.js, Python, Spigot Plugins</p>
+        <!-- Add more details here -->
     </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form action="submit_form.php" method="POST">
-            <label for="name">Name</label>
+    <section id="about" class="content">
+        <h2>About Me</h2>
+        <p>Brief biography and background information.</p>
+    </section>
+
+    <section id="contact" class="content">
+        <h2>Contact</h2>
+        <form>
+            <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email</label>
+            <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-
-            <label for="message">Message</label>
+            <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Send Message</button>
+            <button type="submit">Send</button>
         </form>
     </section>
 
     <footer>
-        <p>© 2024 Purukees. All rights reserved.</p>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
     </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Space Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="parallax"></div>
+    <header>
+        <nav>
+            <h1>Your Name</h1>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="content">
+        <h2>Welcome to My Space Portfolio</h2>
+        <p>Hi, I'm [Your Name], a developer specializing in Node.js, Python, and Spigot plugins.</p>
+    </section>
+
+    <section id="projects" class="content">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Project Title</h3>
+            <p>Description of the project.</p>
+            <a href="#">View Project</a>
+        </div>
+        <!-- Add more projects as needed -->
+    </section>
+
+    <section id="skills" class="content">
+        <h2>Skills</h2>
+        <p>Node.js, Python, Spigot Plugins</p>
+        <!-- Add more details here -->
+    </section>
+
+    <section id="about" class="content">
+        <h2>About Me</h2>
+        <p>Brief biography and background information.</p>
+    </section>
+
+    <section id="contact" class="content">
+        <h2>Contact</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
