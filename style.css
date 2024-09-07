@@ -1,9 +1,11 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
 }
 
 a {
@@ -14,11 +16,12 @@ a {
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 /* Header Styles */
 header {
-    background-color: #333;
+    background-color: #222;
     color: white;
     padding: 1rem 2rem;
     display: flex;
@@ -40,52 +43,52 @@ nav a {
     color: white;
     margin-left: 20px;
     font-size: 1rem;
-    transition: border-bottom 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
 }
 
 nav a.active,
 nav a:hover {
-    border-bottom: 2px solid white;
+    color: #ff4b5c;
 }
 
 /* Home Section */
 section.home {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
-    padding: 3rem;
-    background-color: #fff;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    text-align: center;
 }
 
 .home-img img {
-    width: 300px;
-    height: auto;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.home-content {
-    max-width: 600px;
+    object-fit: cover;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
 }
 
 .home-content h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
     color: #333;
+    margin-bottom: 0.5rem;
 }
 
 .home-content h1 span {
-    color: #007bff;
+    color: #ff4b5c;
 }
 
 .typing-text span {
-    color: #ff4b5c;
+    color: #007bff;
 }
 
 .home-content p {
     margin: 1rem 0;
     font-size: 1.1rem;
-    line-height: 1.6;
+    color: #555;
 }
 
 .social-icons {
@@ -93,19 +96,19 @@ section.home {
 }
 
 .social-icons a {
-    color: #333;
-    margin-right: 10px;
+    color: #555;
+    margin-right: 15px;
     font-size: 1.8rem;
     transition: color 0.3s;
 }
 
 .social-icons a:hover {
-    color: #007bff;
+    color: #ff4b5c;
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 25px;
     background-color: #007bff;
     color: white;
     font-size: 1rem;
@@ -121,24 +124,30 @@ section.home {
 
 /* Projects Section */
 #projects {
-    padding: 3rem 2rem;
-    background-color: #f4f4f4;
+    padding: 4rem 2rem;
+    background-color: #fff;
     text-align: center;
 }
 
 #projects h2 {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    color: #333;
 }
 
 .project {
+    background-color: #f9f9f9;
     margin-bottom: 2rem;
-    background-color: white;
     padding: 1.5rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     margin: 0 auto 2rem;
+    transition: transform 0.3s;
+}
+
+.project:hover {
+    transform: translateY(-5px);
 }
 
 .project h3 {
@@ -147,8 +156,9 @@ section.home {
 }
 
 .project p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 1rem 0;
+    color: #555;
 }
 
 .project a {
@@ -163,14 +173,15 @@ section.home {
 
 /* Skills Section */
 #skills {
-    padding: 3rem 2rem;
-    background-color: #fff;
+    padding: 4rem 2rem;
+    background-color: #f4f4f4;
     text-align: center;
 }
 
 #skills h2 {
     font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    color: #333;
 }
 
 #skills ul {
@@ -180,13 +191,12 @@ section.home {
 }
 
 #skills li {
-    font-size: 1.2rem;
-    margin: 0 15px;
+    font-size: 1rem;
     padding: 10px 20px;
+    margin: 10px;
     background-color: #007bff;
     color: white;
     border-radius: 5px;
-    margin-bottom: 10px;
     transition: background-color 0.3s ease-in-out;
 }
 
@@ -196,14 +206,15 @@ section.home {
 
 /* Contact Section */
 #contact {
-    padding: 3rem 2rem;
-    background-color: #f4f4f4;
+    padding: 4rem 2rem;
+    background-color: #fff;
     text-align: center;
 }
 
 #contact h2 {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
+    color: #333;
 }
 
 form {
@@ -211,8 +222,8 @@ form {
     margin: 0 auto;
     background-color: white;
     padding: 2rem;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 form label {
@@ -250,8 +261,13 @@ form button:hover {
 
 /* Footer */
 footer {
-    background-color: #333;
+    background-color: #222;
     color: white;
     padding: 1.5rem;
     text-align: center;
+}
+
+footer p {
+    font-size: 1rem;
+    margin: 0;
 }
