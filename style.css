@@ -1,277 +1,57 @@
-/* General Styles */
+/* styles.css */
 body {
-    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    background-color: #000;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1em 0;
+    text-align: center;
+    z-index: 1000;
 }
 
-ul {
+nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* Header Styles */
-header {
-    background-color: #222;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+nav ul li {
+    display: inline;
+    margin: 0 1em;
 }
 
-header a.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
 }
 
-nav {
-    display: flex;
-}
-
-nav a {
-    color: white;
-    margin-left: 20px;
-    font-size: 1rem;
-    transition: color 0.3s ease-in-out;
-}
-
-nav a.active,
-nav a:hover {
-    color: #ff4b5c;
-}
-
-/* Home Section */
-section.home {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.parallax {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100vh;
-    text-align: center;
-    background-color: #fff;
+    background: url('https://your-space-image-url.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
 }
 
-.home-content {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.home-img img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
-}
-
-.home-content h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 0.5rem;
-}
-
-.home-content h1 span {
-    color: #ff4b5c;
-}
-
-.typing-text span {
-    color: #007bff;
-}
-
-.home-content p {
-    margin: 1rem 0;
-    font-size: 1.1rem;
-    color: #555;
-}
-
-.social-icons {
-    margin-top: 1.5rem;
-}
-
-.social-icons a {
-    color: #555;
-    margin-right: 15px;
-    font-size: 1.8rem;
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
-    color: #ff4b5c;
-}
-
-.btn {
-    display: inline-block;
-    padding: 12px 25px;
-    background-color: #007bff;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-.btn:hover {
-    background-color: #0056b3;
-}
-
-/* Projects Section */
-#projects {
-    padding: 4rem 2rem;
-    background-color: #fff;
+.content {
+    padding: 100px 2em;
     text-align: center;
 }
 
-#projects h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #333;
-}
-
-.project {
-    background-color: #f9f9f9;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    transition: transform 0.3s;
-}
-
-.project:hover {
-    transform: translateY(-5px);
-}
-
-.project h3 {
-    font-size: 1.8rem;
-    color: #007bff;
-}
-
-.project p {
-    font-size: 1rem;
-    margin: 1rem 0;
-    color: #555;
-}
-
-.project a {
-    color: #007bff;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.project a:hover {
-    color: #0056b3;
-}
-
-/* Skills Section */
-#skills {
-    padding: 4rem 2rem;
-    background-color: #f4f4f4;
-    text-align: center;
-}
-
-#skills h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: #333;
-}
-
-#skills ul {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-#skills li {
-    font-size: 1rem;
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
-}
-
-#skills li:hover {
-    background-color: #0056b3;
-}
-
-/* Contact Section */
-#contact {
-    padding: 4rem 2rem;
-    background-color: #fff;
-    text-align: center;
-}
-
-#contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: #333;
-}
-
-form {
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 2rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-}
-
-form label {
-    font-size: 1.1rem;
-    display: block;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-form input,
-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-}
-
-form button {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    transition: background-color 0.3s ease-in-out;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-/* Footer */
 footer {
-    background-color: #222;
-    color: white;
-    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
     text-align: center;
-}
-
-footer p {
-    font-size: 1rem;
-    margin: 0;
+    padding: 1em 0;
 }
