@@ -20,6 +20,8 @@ header {
     text-align: center;
     background: linear-gradient(120deg, rgba(30,60,114,0.8), rgba(42,82,152,0.8)), url('background.jpg') center/cover no-repeat;
     color: white;
+    position: relative;
+    overflow: hidden;
 }
 
 nav ul {
@@ -49,13 +51,15 @@ nav ul li a:hover {
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     margin-bottom: 0.5em;
+    letter-spacing: 2px;
 }
 
 .hero-text p {
     font-size: 1.5rem;
     margin-bottom: 1em;
+    font-weight: 400;
 }
 
 .btn {
@@ -74,15 +78,10 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
+/* Section Styles */
 section {
     padding: 4em 2em;
-    margin: 0 auto;
+    margin: 2em auto;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
@@ -104,10 +103,12 @@ h2 {
 }
 
 .project-card {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     padding: 2em;
-    border-radius: 10px;
+    border-radius: 15px;
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .project-card:hover {
@@ -124,9 +125,53 @@ h2 {
     margin-top: 1em;
 }
 
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+input, textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ffce54;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    outline: none;
+}
+
+input:focus, textarea:focus {
+    border-color: #ffab00;
+}
+
+button[type="submit"] {
+    padding: 10px 25px;
+    background-color: #ffce54;
+    color: #333;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #ffab00;
+    transform: scale(1.05);
+}
+
+/* Footer */
 footer {
     padding: 1em;
     background-color: #333;
     color: white;
     text-align: center;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
