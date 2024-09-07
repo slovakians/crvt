@@ -3,9 +3,9 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    font-family: Arial, sans-serif;
-    background-color: #000;
-    overflow: hidden; /* Prevent scrollbars from appearing */
+    font-family: 'Roboto', sans-serif;
+    background: #000;
+    overflow: hidden;
 }
 
 header {
@@ -13,7 +13,7 @@ header {
     top: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.8);
-    padding: 1em 0;
+    padding: 1em;
     text-align: center;
     z-index: 1000;
 }
@@ -32,6 +32,28 @@ nav ul li {
 nav ul li a {
     color: #fff;
     text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+    padding: 2em;
+    border-radius: 10px;
+}
+
+.hero h2 {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.2em;
 }
 
 .parallax {
@@ -40,16 +62,36 @@ nav ul li a {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: url('space.png') no-repeat center center fixed;
+    background: url('space-background.png') no-repeat center center fixed;
     background-size: cover;
     z-index: -1;
-    overflow: hidden; /* Ensure no overflow */
 }
 
 .content {
-    padding: 100px 2em;
+    padding: 4em 2em;
     text-align: center;
-    z-index: 1; /* Ensure content is above the parallax */
+    position: relative;
+    z-index: 1;
+}
+
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: center;
+}
+
+.project {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1em;
+    border-radius: 10px;
+    max-width: 300px;
+    text-align: center;
+}
+
+.project img {
+    width: 100%;
+    border-radius: 10px;
 }
 
 footer {
@@ -57,6 +99,43 @@ footer {
     color: #fff;
     text-align: center;
     padding: 1em 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+form {
+    display: grid;
+    gap: 1em;
+    max-width: 600px;
+    margin: auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+form input, form textarea {
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: #333;
+    color: #fff;
+}
+
+form button {
+    padding: 0.5em;
+    border: none;
+    background: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #0056b3;
 }
 
 /* Add starry background effect */
@@ -72,5 +151,5 @@ body::before {
     background-size: 2px 2px, 2px 2px;
     background-position: 0 0, 50% 50%;
     z-index: -2;
-    pointer-events: none; /* Allow interaction with elements above */
+    pointer-events: none;
 }
