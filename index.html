@@ -3,81 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Portfolio of Purukees - Node.js, Python, and Minecraft Developer">
     <title>Purukees | Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Purukees</a>
+    <header id="header">
         <nav>
-            <a href="#" class="active">Home</a>
-            <a href="https://youtube.com/@ShadBg">YouTube</a>
-            <a href="https://github.com/slovakians">GitHub</a>
-            <a href="https://discord.gg/cYPcNeJsNF">Discord</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </nav>
+        <div class="hero-text">
+            <h1>Purukees</h1>
+            <p>Node.js | Python | Minecraft Development</p>
+            <a href="#projects" class="btn">See My Work</a>
+        </div>
     </header>
 
-    <section class="home">
-        <div class="home-img">
-            <img src="main.jpg" alt="Profile Image">
-        </div>
-        <div class="home-content">
-            <h1>Hi, It's <span>Purukees</span></h1>
-            <h3 class="typing-text">I'm a <span>Node.js & Python Developer</span></h3>
-            <p>Creator of Mishua and owner of DupeCraftMC. I develop bots that use slash commands, and I am a skilled developer working with Node.js, Python, and Minecraft development.</p>
-            <div class="social-icons">
-                <a href="https://youtube.com/@ShadBg"><i class="fa-brands fa-youtube"></i></a>
-                <a href="https://github.com/slovakians"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-            <a href="https://discord.gg/cYPcNeJsNF" class="btn">Join Discord</a>
-        </div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Purukees, a passionate developer skilled in Node.js, Python, and Minecraft development. I love creating efficient solutions and gaming experiences!</p>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
-        <div class="project">
-            <h3>Mishua Bot</h3>
-            <p>A feature-rich Discord bot utilizing Node.js, handling various functionalities with efficient slash commands.</p>
-            <a href="https://github.com/slovakians/mishua" target="_blank">View on GitHub</a>
-        </div>
-        <div class="project">
-            <h3>DupeCraftMC</h3>
-            <p>A Minecraft server plugin developed with Java, offering custom game mechanics and enhanced player experience.</p>
-            <a href="https://github.com/slovakians/dupecraftmc" target="_blank">View on GitHub</a>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Node.js Project 1</h3>
+                    <p>Short description of the project.</p>
+                    <a href="link-to-github">View on GitHub</a>
+                </div>
+            </div>
+            <!-- Add more project cards -->
         </div>
     </section>
 
     <section id="skills">
         <h2>Skills</h2>
-        <ul>
+        <ul class="skills-list">
             <li>Node.js</li>
             <li>Python</li>
-            <li>Minecraft Plugin Development (Spigot/Bukkit)</li>
-            <li>Express.js, Django</li>
+            <li>Minecraft Modding/Plugins</li>
         </ul>
     </section>
 
     <section id="contact">
         <h2>Contact Me</h2>
-        <form action="submit_form.php" method="POST">
-            <label for="name">Name</label>
+        <form action="mailto:your-email@example.com" method="post">
+            <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email</label>
+            <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-
-            <label for="message">Message</label>
+            <label for="message">Message:</label>
             <textarea id="message" name="message" required></textarea>
-
-            <button type="submit">Send Message</button>
+            <button type="submit" class="btn">Send Message</button>
         </form>
     </section>
 
     <footer>
-        <p>© 2024 Purukees. All rights reserved.</p>
+        <p>&copy; 2024 Purukees. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
