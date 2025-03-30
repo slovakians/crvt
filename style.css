@@ -1,155 +1,36 @@
-/* styles.css */
 body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #222;
     margin: 0;
     padding: 0;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    background: #000;
-    overflow: hidden;
+    text-align: center;
 }
 
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 1em;
-    text-align: center;
-    z-index: 1000;
+    background: #f4f4f4;
+    padding: 20px;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
+h1 {
     margin: 0;
 }
 
-nav ul li {
-    display: inline;
-    margin: 0 1em;
+section {
+    padding: 20px;
 }
 
-nav ul li a {
-    color: #fff;
+a {
+    color: #0077cc;
     text-decoration: none;
-    font-weight: bold;
 }
 
-.hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    background: rgba(0, 0, 0, 0.6);
-    text-align: center;
-    padding: 2em;
-    border-radius: 10px;
-}
-
-.hero h2 {
-    font-size: 2.5em;
-    margin: 0;
-}
-
-.hero p {
-    font-size: 1.2em;
-}
-
-.parallax {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url('space-background.png') no-repeat center center fixed;
-    background-size: cover;
-    z-index: -1;
-}
-
-.content {
-    padding: 4em 2em;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-}
-
-.projects-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    justify-content: center;
-}
-
-.project {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 1em;
-    border-radius: 10px;
-    max-width: 300px;
-    text-align: center;
-}
-
-.project img {
-    width: 100%;
-    border-radius: 10px;
+a:hover {
+    text-decoration: underline;
 }
 
 footer {
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    text-align: center;
-    padding: 1em 0;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-form {
-    display: grid;
-    gap: 1em;
-    max-width: 600px;
-    margin: auto;
-}
-
-form label {
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-form input, form textarea {
-    width: 100%;
-    padding: 0.5em;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background: #333;
-    color: #fff;
-}
-
-form button {
-    padding: 0.5em;
-    border: none;
-    background: #007BFF;
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-form button:hover {
-    background: #0056b3;
-}
-
-/* Add starry background effect */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 2px 2px, 2px 2px;
-    background-position: 0 0, 50% 50%;
-    z-index: -2;
-    pointer-events: none;
+    background: #f4f4f4;
+    padding: 10px;
+    margin-top: 20px;
 }
