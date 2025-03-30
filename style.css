@@ -1,20 +1,75 @@
-/* Center the profile card */
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 22px;
+    color: #007BFF;
+    margin-left: 20px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #0056b3;
+}
+
+/* Container */
 .container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 50px 0;
+}
+
+/* Status Section - Discord Profile Style */
+.status-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #1E1F22;
+    height: 80vh;
 }
 
-/* Discord Profile Box */
+/* Profile Card */
 .discord-profile {
-    width: 300px;
-    background: #2B2D31;
-    border-radius: 10px;
+    width: 350px;
+    background: white;
+    border-radius: 12px;
     text-align: center;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 /* Profile Banner */
@@ -33,27 +88,27 @@
 /* Profile Content */
 .profile-content {
     padding: 20px;
-    color: white;
 }
 
 /* Profile Picture */
 .profile-pfp {
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
-    border: 4px solid #2B2D31;
-    margin-top: -40px;
+    border: 5px solid white;
+    margin-top: -50px;
 }
 
 /* Name */
 .profile-name {
     font-size: 20px;
     font-weight: bold;
+    color: #333;
 }
 
 /* Tag */
 .profile-tag {
-    color: #bbb;
+    color: #777;
     font-size: 14px;
     margin-top: 5px;
 }
@@ -62,12 +117,13 @@
 .profile-bio {
     margin-top: 10px;
     font-size: 14px;
-    color: #bbb;
+    color: #555;
 }
 
 .profile-bio a {
-    color: #7289DA;
+    color: #007BFF;
     text-decoration: none;
+    font-weight: bold;
 }
 
 .profile-bio a:hover {
@@ -83,9 +139,10 @@
     font-size: 14px;
 }
 
+/* Status Indicator */
 .status-indicator {
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
     margin-right: 5px;
 }
@@ -95,3 +152,14 @@
 .offline { background: #747F8D; }
 .idle { background: #FAA61A; }
 .dnd { background: #ED4245; }
+
+/* Cool Animation */
+@keyframes glow {
+    0% { box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(0, 123, 255, 0.7); }
+    100% { box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
+}
+
+.status-indicator.online {
+    animation: glow 1.5s infinite alternate;
+}
