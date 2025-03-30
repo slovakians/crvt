@@ -1,99 +1,39 @@
-/* General Styles */
-body {
-    background-color: white;
-    color: black;
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuwari Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">fuwari</a>
+            <div class="links">
+                <a href="index.html" class="active">home</a>
+                <a href="about.html">about</a>
+            </div>
+        </nav>
 
-.container {
-    max-width: 600px;
-    text-align: center;
-}
+        <header>
+            <img src="assets/profile.jpg" alt="Profile">
+            <h1>fuwari</h1>
+            <p>web developer, designer, writer.</p>
+        </header>
 
-/* Navbar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-}
+        <section class="projects">
+            <h2>projects</h2>
+            <ul>
+                <li><a href="#">project 1</a></li>
+                <li><a href="#">project 2</a></li>
+                <li><a href="#">project 3</a></li>
+            </ul>
+        </section>
 
-nav .logo {
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-}
-
-.links a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: gray;
-}
-
-.links .active {
-    font-weight: bold;
-    color: black;
-}
-
-/* Profile Section */
-header img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-}
-
-header h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-header p {
-    color: gray;
-}
-
-/* Projects Section */
-.projects {
-    margin-top: 40px;
-}
-
-.projects h2 {
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-.projects ul {
-    list-style: none;
-    padding: 0;
-}
-
-.projects ul li {
-    margin: 10px 0;
-}
-
-.projects ul li a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
-
-/* About Page */
-.about {
-    margin-top: 40px;
-}
-
-.about p {
-    color: gray;
-    margin-bottom: 15px;
-}
-
-/* Footer */
-footer {
-    margin-top: 50px;
-    font-size: 0.9rem;
-    color: gray;
-}
+        <footer>
+            <p>© 2025 fuwari</p>
+        </footer>
+    </div>
+</body>
+</html>
