@@ -1,54 +1,97 @@
-/* General Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-    margin: 0;
-    padding: 0;
-}
-
-/* Header */
-header {
-    background: white;
-    padding: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-header h1 {
-    font-size: 22px;
-    color: #007BFF;
-    margin-left: 20px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #007BFF;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #0056b3;
-}
-
-/* Container */
+/* Center the profile card */
 .container {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #1E1F22;
 }
+
+/* Discord Profile Box */
+.discord-profile {
+    width: 300px;
+    background: #2B2D31;
+    border-radius: 10px;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Banner */
+.profile-banner {
+    width: 100%;
+    height: 100px;
+    background: #007BFF;
+}
+
+.profile-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Profile Content */
+.profile-content {
+    padding: 20px;
+    color: white;
+}
+
+/* Profile Picture */
+.profile-pfp {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid #2B2D31;
+    margin-top: -40px;
+}
+
+/* Name */
+.profile-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Tag */
+.profile-tag {
+    color: #bbb;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Bio */
+.profile-bio {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #bbb;
+}
+
+.profile-bio a {
+    color: #7289DA;
+    text-decoration: none;
+}
+
+.profile-bio a:hover {
+    text-decoration: underline;
+}
+
+/* Status */
+.profile-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+/* Status Colors */
+.online { background: #3BA55C; }
+.offline { background: #747F8D; }
+.idle { background: #FAA61A; }
+.dnd { background: #ED4245; }

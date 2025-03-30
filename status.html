@@ -20,10 +20,23 @@
     </nav>
 </header>
 
+<!-- Profile Card -->
 <section class="container">
-    <h2>My Current Status</h2>
-    <p id="status-text">Working on something cool...</p>
-    <button onclick="updateStatus()">Update Status</button>
+    <div class="discord-profile">
+        <div class="profile-banner">
+            <img src="images/banner.jpg" class="profile-banner-img" alt="Banner">
+        </div>
+        <div class="profile-content">
+            <img src="images/pfp.jpg" class="profile-pfp" alt="Profile Picture">
+            <h2 class="profile-name">SYZDARK</h2>
+            <p class="profile-tag">@SYZDARK</p>
+            <p class="profile-bio">💻 Sole Developer of CordMC <br> 🔗 <a href="https://cordmc.tiiny.site/">Website</a></p>
+            <div class="profile-status">
+                <span class="status-indicator online"></span>
+                <span id="status-text">Online</span>
+            </div>
+        </div>
+    </div>
 </section>
 
 <script src="script.js"></script>
