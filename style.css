@@ -1,99 +1,81 @@
 /* General Styles */
 body {
-    background-color: white;
-    color: black;
-    font-family: 'Inter', sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .container {
-    max-width: 600px;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 50px 0;
+}
+
+/* Header */
+header {
+    background: #f8f8f8;
+    padding: 20px;
     text-align: center;
 }
 
-/* Navbar */
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px 0;
-}
-
-nav .logo {
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-}
-
-.links a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: gray;
-}
-
-.links .active {
-    font-weight: bold;
-    color: black;
-}
-
-/* Profile Section */
-header img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-}
-
-header h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-header p {
-    color: gray;
-}
-
-/* Projects Section */
-.projects {
-    margin-top: 40px;
-}
-
-.projects h2 {
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-.projects ul {
+nav ul {
     list-style: none;
     padding: 0;
 }
 
-.projects ul li {
-    margin: 10px 0;
+nav ul li {
+    display: inline;
+    margin: 0 15px;
 }
 
-.projects ul li a {
+nav ul li a {
     text-decoration: none;
-    color: black;
+    color: #333;
     font-weight: bold;
 }
 
-/* About Page */
-.about {
-    margin-top: 40px;
+/* Sections */
+section {
+    padding: 60px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-.about p {
-    color: gray;
-    margin-bottom: 15px;
+/* Project Cards */
+.project {
+    background: #fafafa;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Footer */
-footer {
-    margin-top: 50px;
-    font-size: 0.9rem;
-    color: gray;
+.project img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.project a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+/* Status */
+button {
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0056b3;
 }

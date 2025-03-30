@@ -3,37 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fuwari Clone</title>
+    <title>My Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+
+    <!-- Navigation -->
+    <header>
+        <h1>My Portfolio</h1>
         <nav>
-            <a href="index.html" class="logo">fuwari</a>
-            <div class="links">
-                <a href="index.html" class="active">home</a>
-                <a href="about.html">about</a>
-            </div>
-        </nav>
-
-        <header>
-            <img src="assets/profile.jpg" alt="Profile">
-            <h1>fuwari</h1>
-            <p>web developer, designer, writer.</p>
-        </header>
-
-        <section class="projects">
-            <h2>projects</h2>
             <ul>
-                <li><a href="#">project 1</a></li>
-                <li><a href="#">project 2</a></li>
-                <li><a href="#">project 3</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#status">Status</a></li>
             </ul>
-        </section>
+        </nav>
+    </header>
 
-        <footer>
-            <p>© 2025 fuwari</p>
-        </footer>
-    </div>
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <h2>Welcome, I'm [Your Name]</h2>
+            <p>A passionate developer who loves building cool stuff.</p>
+            <p>Skills: HTML, CSS, JavaScript, Python, etc.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="project">
+                <img src="images/project1.jpg" alt="Project 1">
+                <h3>Project Title</h3>
+                <p>Description of your project.</p>
+                <a href="#">View Project</a>
+            </div>
+            <div class="project">
+                <img src="images/project2.jpg" alt="Project 2">
+                <h3>Another Cool Project</h3>
+                <p>Details about this project.</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Hi, I'm [Your Name], a developer with experience in web development, backend systems, and more.</p>
+            <p>Find me on: 
+                <a href="https://github.com/yourgithub" target="_blank">GitHub</a> | 
+                <a href="https://linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Status Section -->
+    <section id="status">
+        <div class="container">
+            <h2>My Current Status</h2>
+            <p id="status-text">Working on something cool...</p>
+            <button onclick="updateStatus()">Update Status</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
