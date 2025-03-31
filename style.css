@@ -8,7 +8,7 @@ body {
     transition: 0.3s ease-in-out;
 }
 
-/* 🏠 Header */
+/* 🏠 Sticky Header */
 header {
     background: white;
     padding: 15px;
@@ -16,6 +16,10 @@ header {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 header h1 {
@@ -43,121 +47,101 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #0056b3;
+    color: #ffcc00;
 }
 
-/* ✨ Main Container */
-.container {
-    width: 80%;
-    margin: auto;
-    text-align: center;
-    padding: 50px 0;
-}
-
-/* 🎭 Status Section - Discord Profile Look */
-.status-container {
+/* 🌟 Hero Section */
+.hero {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    width: 100%;
-    padding: 20px;
+    height: 100vh;
+    text-align: center;
     background: linear-gradient(135deg, #007BFF, #00D4FF);
-}
-
-/* 💎 Discord Profile */
-.discord-profile {
-    width: 350px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    text-align: center;
+    color: white;
+    position: relative;
     overflow: hidden;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out;
 }
 
-.discord-profile:hover {
-    transform: scale(1.05);
-}
-
-/* 🖼 Profile Banner */
-.profile-banner {
-    width: 100%;
-    height: 100px;
-    background: #007BFF;
-}
-
-.profile-banner-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* 🎭 Profile Content */
-.profile-content {
-    padding: 20px;
-}
-
-/* 🔵 Profile Picture */
-.profile-pfp {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    border: 5px solid white;
-    margin-top: -50px;
-}
-
-/* 🏷 Name & Tag */
-.profile-name {
-    font-size: 22px;
+.hero h2 {
+    font-size: 42px;
     font-weight: bold;
-    color: #333;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-.profile-tag {
-    color: #777;
-    font-size: 14px;
-    margin-top: 5px;
+.hero-subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
 }
 
-/* 📝 Bio */
-.profile-bio {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #555;
-}
-
-.profile-bio a {
-    color: #007BFF;
+.hero-btn {
+    padding: 12px 20px;
+    background: #ffea00;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.profile-bio a:hover {
-    text-decoration: underline;
+.hero-btn:hover {
+    background: #ffcc00;
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* 🟢 Status Indicator */
-.profile-status {
+/* 🛠 Animated Button */
+.animated-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #007BFF;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.animated-btn:hover {
+    background: #ffea00;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 📊 GitHub Stats */
+.github-stats {
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: 15px;
-    font-size: 14px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px 0;
+    background: #f9f9f9;
 }
 
-.status-indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    margin-right: 5px;
+.github-stats h2 {
+    text-align: center;
+    width: 100%;
+    font-size: 28px;
+    color: #007BFF;
+    margin-bottom: 20px;
 }
 
-.online { background: #3BA55C; }
-.offline { background: #747F8D; }
-.idle { background: #FAA61A; }
-.dnd { background: #ED4245; }
+.github-stats img {
+    max-width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
+
+/* 📌 Project Hover Animation */
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
 
 /* ✨ Glowing Animation */
 @keyframes glow {
@@ -170,96 +154,47 @@ nav ul li a:hover {
     animation: glow 1.5s infinite alternate;
 }
 
-/* 🖥️ Projects Section */
-.projects-container {
-    width: 85%;
-    margin: auto;
+/* 🔻 Footer */
+.footer {
+    background: #007BFF;
+    color: white;
     text-align: center;
-    padding: 60px 0;
+    padding: 15px;
+    margin-top: 50px;
+    font-size: 14px;
 }
 
-.projects-container h2 {
-    font-size: 30px;
-    color: #007BFF;
-    margin-bottom: 20px;
+.footer a {
+    color: #ffea00;
+    text-decoration: none;
     font-weight: bold;
 }
 
-/* 🛠 Projects Grid */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    justify-content: center;
+.footer a:hover {
+    text-decoration: underline;
 }
 
-/* 📌 Glassmorphism Project Cards */
-.project-card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
-    backdrop-filter: blur(10px);
-}
-
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-}
-
-/* 🖼 Project Image */
-.project-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out;
-}
-
-.project-card:hover img {
-    transform: scale(1.05);
-}
-
-/* 🔎 Project Info */
-.project-info {
-    padding: 20px;
-    text-align: left;
-}
-
-.project-info h3 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.project-info p {
-    font-size: 15px;
-    color: #555;
-}
-
-/* 🎭 Project Button */
-.project-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    background: #007BFF;
-    color: white;
-    font-size: 14px;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.project-btn:hover {
-    background: #ffea00;
-    color: black;
-    transform: scale(1.05);
-}
-
-/* 🌙 Dark Mode Toggle */
+/* 🌙 Dark Mode */
 .dark-mode {
     background-color: #0d1117;
     color: #c9d1d9;
+}
+
+.dark-mode .hero {
+    background: linear-gradient(135deg, #121212, #222222);
+}
+
+.dark-mode .hero-btn {
+    background: #ffcc00;
+    color: black;
+}
+
+.dark-mode .footer {
+    background: #222;
+}
+
+.dark-mode .nav ul li a {
+    color: #58a6ff;
 }
 
 .dark-mode .project-card {
@@ -270,10 +205,6 @@ nav ul li a:hover {
 .dark-mode .profile-name,
 .dark-mode .project-info h3 {
     color: #c9d1d9;
-}
-
-.dark-mode .nav ul li a {
-    color: #58a6ff;
 }
 
 /* 📱 Responsive Design */
@@ -289,5 +220,13 @@ nav ul li a:hover {
 
     .discord-profile {
         width: 90%;
+    }
+
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .github-stats img {
+        width: 95%;
     }
 }
