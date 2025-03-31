@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - My Portfolio</title>
+    <title>slovakians - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 </head>
 <body>
 
 <header>
-    <h1>🚀 My Portfolio</h1>
+    <h1>🚀 slovakians</h1>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="status.html">Status</a></li>
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="projects.html">📂 Projects</a></li>
+            <li><a href="about.html">👨‍💻 About</a></li>
+            <li><a href="status.html">🔵 Status</a></li>
         </ul>
     </nav>
 </header>
@@ -23,22 +24,31 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
-        <h2>Hey, I'm <span>slovakians</span> 👋</h2>
-        <p>🚀 Full-Stack Developer | 🔥 Open Source Enthusiast | 🎨 UI/UX Designer</p>
-        <p>💻 Skills: <span>HTML, CSS, JavaScript, React, Python</span></p>
-        <a href="https://github.com/slovakians" class="btn">🌟 View My GitHub</a>
+        <h2>Hey, I'm <span class="typed-text"></span> 👋</h2>
+        <p class="hero-subtitle">🚀 Full-Stack Developer | 🔥 Open Source Enthusiast | 🎨 UI/UX Designer</p>
+        <p>💻 Skilled in: <span>HTML, CSS, JavaScript, React, Python</span></p>
+        <a href="https://github.com/slovakians" class="btn">🌟 Check My GitHub</a>
     </div>
 </section>
 
 <!-- GitHub Stats Section -->
 <section class="github-stats">
-    <h2>📊 My GitHub Stats</h2>
+    <h2>📊 GitHub Stats</h2>
     <div class="stats-grid">
         <img src="https://github-readme-stats.vercel.app/api?username=slovakians&show_icons=true&theme=tokyonight" alt="GitHub Stats">
         <img src="https://github-readme-streak-stats.herokuapp.com/?user=slovakians&theme=tokyonight" alt="GitHub Streak">
         <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=slovakians&layout=compact&theme=tokyonight" alt="Most Used Languages">
     </div>
 </section>
+
+<script>
+    var typed = new Typed(".typed-text", {
+        strings: ["a Developer", "a Programmer", "a Creator", "a Problem Solver"],
+        typeSpeed: 80,
+        backSpeed: 50,
+        loop: true
+    });
+</script>
 
 </body>
 </html>
