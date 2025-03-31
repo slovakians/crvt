@@ -55,14 +55,14 @@
             let lastCheck = sessionStorage.getItem("lastVerification");
             if (!lastCheck) return true; // If no session, force verification
             let elapsed = Date.now() - parseInt(lastCheck);
-            return elapsed >= 1800000; // 30 minutes (1800000ms)
+            return elapsed >= 10000; // 10 seconds session timeout
         }
 
         function verifyAndRedirect() {
             setSession(); // Reset session
             setTimeout(() => {
-                window.location.href = "index.html"; // Redirect after verification
-            }, 3000);
+                window.location.href = "index.html"; // Redirect after 10 seconds
+            }, 10000);
         }
 
         if (needsVerification()) {
