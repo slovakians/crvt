@@ -59,9 +59,14 @@
 </script>
 
 <script>
-    if (!sessionStorage.getItem("lastVerification") || (Date.now() - parseInt(sessionStorage.getItem("lastVerification")) >= 1800000)) {
-        window.location.href = "verification.html";
+    function checkSession() {
+        let lastCheck = sessionStorage.getItem("lastVerification");
+        if (!lastCheck || Date.now() - parseInt(lastCheck) >= 10000) {
+            window.location.href = "cloudflare.html"; // Redirect to verification page
+        }
     }
+
+    setInterval(checkSession, 1000); // Check every second
 </script>
 
 </body>
