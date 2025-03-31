@@ -61,7 +61,7 @@
 <script>
     function checkSession() {
         let lastCheck = sessionStorage.getItem("lastVerification");
-        if (!lastCheck || Date.now() - parseInt(lastCheck) >= 10000) {
+        if (!lastCheck || Date.now() - parseInt(lastCheck) >= 600000) {
             window.location.href = "verification.html"; // Redirect to verification page
         }
     }
