@@ -31,7 +31,7 @@ nav ul {
 
 nav ul li {
     display: inline;
-    margin: 0 10px;
+    margin: 0 15px;
 }
 
 nav ul li a {
@@ -53,12 +53,15 @@ nav ul li a:hover {
     padding: 50px 0;
 }
 
-/* Status Section - Discord Profile Style */
+/* 📌 Status Section - Discord Profile Look */
 .status-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    min-height: 100vh; /* Fully Centered */
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #007BFF, #00D4FF);
 }
 
 /* Profile Card */
@@ -69,7 +72,11 @@ nav ul li a:hover {
     text-align: center;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.discord-profile:hover {
+    transform: scale(1.05);
 }
 
 /* Profile Banner */
@@ -101,7 +108,7 @@ nav ul li a:hover {
 
 /* Name */
 .profile-name {
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     color: #333;
 }
@@ -153,7 +160,7 @@ nav ul li a:hover {
 .idle { background: #FAA61A; }
 .dnd { background: #ED4245; }
 
-/* Cool Animation */
+/* ✨ Glowing Animation for Online */
 @keyframes glow {
     0% { box-shadow: 0 0 10px rgba(0, 123, 255, 0.5); }
     50% { box-shadow: 0 0 20px rgba(0, 123, 255, 0.7); }
@@ -164,39 +171,41 @@ nav ul li a:hover {
     animation: glow 1.5s infinite alternate;
 }
 
-/* Projects Page */
+/* 🖥️ Projects Section */
 .projects-container {
-    width: 80%;
+    width: 85%;
     margin: auto;
     text-align: center;
-    padding: 50px 0;
+    padding: 60px 0;
 }
 
 .projects-container h2 {
-    font-size: 28px;
+    font-size: 30px;
     color: #007BFF;
     margin-bottom: 20px;
+    font-weight: bold;
 }
 
 /* Projects Grid */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    gap: 25px;
     justify-content: center;
 }
 
 /* Project Card */
 .project-card {
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 /* Project Image */
@@ -204,22 +213,27 @@ nav ul li a:hover {
     width: 100%;
     height: 180px;
     object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover img {
+    transform: scale(1.05);
 }
 
 /* Project Info */
 .project-info {
-    padding: 15px;
+    padding: 20px;
     text-align: left;
 }
 
 .project-info h3 {
-    font-size: 18px;
+    font-size: 20px;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 .project-info p {
-    font-size: 14px;
+    font-size: 15px;
     color: #555;
 }
 
@@ -227,7 +241,7 @@ nav ul li a:hover {
 .project-btn {
     display: inline-block;
     margin-top: 10px;
-    padding: 8px 12px;
+    padding: 10px 15px;
     background: #007BFF;
     color: white;
     font-size: 14px;
@@ -237,5 +251,19 @@ nav ul li a:hover {
 }
 
 .project-btn:hover {
-    background: #0056b3;
+    background: #ffea00;
+    color: black;
+    transform: scale(1.05);
+}
+
+/* ✨ Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
 }
