@@ -95,12 +95,12 @@ nav ul li a:hover {
     box-shadow: 0px 0px 15px rgba(255, 234, 0, 0.8);
 }
 
-/* 🎭 Status Section */
+/* 🎭 Status Section - Reduced Height */
 .status-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: 70vh; /* Reduced from 100vh */
     width: 100%;
     padding: 20px;
     background: linear-gradient(135deg, #007BFF, #00D4FF);
@@ -108,7 +108,7 @@ nav ul li a:hover {
 
 /* 🎭 Discord Profile */
 .discord-profile {
-    width: 350px;
+    width: 350px; /* Kept original width */
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     text-align: center;
@@ -122,28 +122,48 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* 🔵 Profile Picture */
+/* 🔵 Profile Picture - Adjusted */
 .profile-pfp {
-    width: 90px;
-    height: 90px;
+    width: 85px;  /* Just slightly smaller */
+    height: 85px;
     border-radius: 50%;
     border: 5px solid white;
-    margin-top: -50px;
+    margin-top: -45px; /* Adjusted so it doesn’t look too big */
 }
 
 /* 🟢 Status Indicator */
 .status-indicator {
-    width: 12px;
-    height: 12px;
+    width: 10px;  /* Slightly smaller */
+    height: 10px;
     border-radius: 50%;
     margin-right: 5px;
     animation: pulse 1.5s infinite alternate;
 }
 
+/* 🟢 Status Colors (BRO THIS WAS NEVER REMOVED) */
 .online { background: #3BA55C; }
 .offline { background: #747F8D; }
 .idle { background: #FAA61A; }
 .dnd { background: #ED4245; }
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+    .status-container {
+        min-height: 60vh; /* Slightly smaller on mobile */
+    }
+
+    .profile-pfp {
+        width: 75px;
+        height: 75px;
+        margin-top: -40px;
+    }
+
+    .status-indicator {
+        width: 8px;
+        height: 8px;
+    }
+}
+
 
 /* 🖥️ Projects Section */
 .projects-container {
