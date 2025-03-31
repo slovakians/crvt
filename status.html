@@ -3,43 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status - My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>404 - Page Not Found</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0d1117;
+            color: #fff;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 6rem;
+            font-weight: 600;
+            letter-spacing: 5px;
+            position: relative;
+            animation: glitch 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            background: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #ffea00;
+            color: black;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0px #ff005a, -2px -2px 0px #00bfff; }
+            100% { text-shadow: -2px -2px 0px #ff005a, 2px 2px 0px #00bfff; }
+        }
+    </style>
 </head>
 <body>
-
-<header>
-    <h1>🚀 slovakians</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">🏠 Home</a></li>
-            <li><a href="projects.html">📂 Projects</a></li>
-            <li><a href="about.html">👨‍💻 About</a></li>
-            <li><a href="status.html">🔵 Status</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- Profile Card -->
-<section class="container">
-    <div class="discord-profile">
-        <div class="profile-banner">
-            <img src="images/banner.png" class="profile-banner-img" alt="Banner">
-        </div>
-        <div class="profile-content">
-            <img src="images/pfp.png" class="profile-pfp" alt="Profile Picture">
-            <h2 class="profile-name">SYZDARK</h2>
-            <p class="profile-tag">@SYZDARK</p>
-            <p class="profile-bio">Specializes with Python and NodeJS</p>
-            <div class="profile-status">
-                <span class="status-indicator idle
-                "></span>
-                <span id="status-text">On HighSchool Junior high</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script src="script.js"></script>
+    <h1>404</h1>
+    <p>Oops! This page does not exist.</p>
+    <a href="/" class="btn">Go Home</a>
 </body>
 </html>

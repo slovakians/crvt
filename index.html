@@ -58,5 +58,11 @@
     });
 </script>
 
+<script>
+    if (!sessionStorage.getItem("lastVerification") || (Date.now() - parseInt(sessionStorage.getItem("lastVerification")) >= 1800000)) {
+        window.location.href = "verification.html";
+    }
+</script>
+
 </body>
 </html>
