@@ -3,65 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checking your browser...</title>
+    <title>Verifying Your Browser...</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f3f3f3;
-            color: #333;
+        /* 🌟 General Styles */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background: linear-gradient(135deg, #007BFF, #00D4FF);
+            color: white;
+            text-align: center;
         }
 
-        .cloudflare-container {
-            background: white;
+        /* 🌟 Glassmorphism Container */
+        .verification-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             max-width: 400px;
+            width: 90%;
+            animation: fadeIn 0.8s ease-in-out;
         }
 
+        /* 🌟 Cloudflare Logo */
         .cloudflare-logo {
-            width: 150px;
+            width: 140px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 22px;
             margin-bottom: 10px;
         }
 
+        p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+        /* 🌟 Loading Spinner */
         .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #3498db;
+            width: 45px;
+            height: 45px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid #fff;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 20px auto;
         }
 
+        /* 🌟 Keyframe Animations */
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
     </style>
     <script>
         function setSession() {
-            sessionStorage.setItem("lastVerification", Date.now()); // Store session timestamp
+            sessionStorage.setItem("lastVerification", Date.now()); // Store timestamp
         }
 
         function needsVerification() {
             let lastCheck = sessionStorage.getItem("lastVerification");
             if (!lastCheck) return true; // If no session, force verification
             let elapsed = Date.now() - parseInt(lastCheck);
-            return elapsed >= 10000; // 10 seconds session timeout
+            return elapsed >= 600000; // 10 minutes (600,000 ms)
         }
 
         function verifyAndRedirect() {
             setSession(); // Reset session
             setTimeout(() => {
-                window.location.href = "index.html"; // Redirect after 10 seconds
+                window.location.href = "index.html"; // Redirect after 10s
             }, 10000);
         }
 
@@ -73,12 +100,12 @@
     </script>
 </head>
 <body>
-    <div class="cloudflare-container">
+    <div class="verification-box">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cloudflare_Logo.svg/1200px-Cloudflare_Logo.svg.png" alt="Cloudflare Logo" class="cloudflare-logo">
-        <h2>Checking your browser before accessing this site...</h2>
-        <p>This process is automatic. Your browser will redirect shortly.</p>
+        <h2>Checking your browser...</h2>
+        <p>Please wait while we verify your session.</p>
         <div class="loading-spinner"></div>
-        <p>If you are not redirected, <a href="index.html">click here</a>.</p>
+        <p>If this takes too long, <a href="index.html" style="color: yellow;">click here</a>.</p>
     </div>
 </body>
 </html>

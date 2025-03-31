@@ -58,16 +58,17 @@
     });
 </script>
 
-<script>
+(function() {
     function checkSession() {
         let lastCheck = sessionStorage.getItem("lastVerification");
-        if (!lastCheck || Date.now() - parseInt(lastCheck) >= 10000) {
-            window.location.href = "cloudflare.html"; // Redirect to verification page
+        if (!lastCheck || Date.now() - parseInt(lastCheck) >= 600000) { // 10 minutes (600,000 ms)
+            window.location.href = "verification.html"; // Redirect to verification page
         }
     }
 
     setInterval(checkSession, 1000); // Check every second
-</script>
+})();
+
 
 </body>
 </html>
