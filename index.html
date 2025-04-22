@@ -1,73 +1,727 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>slovakians - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>syzdark | Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#6366f1',secondary:'#4f46e5'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #ffffff;
+color: #1f2937;
+}
+.cursor {
+display: inline-block;
+width: 3px;
+height: 1.2em;
+background-color: #6366f1;
+animation: blink 1s infinite;
+margin-left: 2px;
+}
+@keyframes blink {
+0%, 100% { opacity: 1; }
+50% { opacity: 0; }
+}
+input, textarea {
+background-color: #f9fafb;
+color: #1f2937;
+border: 1px solid #e5e7eb;
+outline: none;
+}
+input:focus, textarea:focus {
+border-color: #6366f1;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.project-card {
+transition: all 0.3s ease;
+}
+.project-card:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.btn-primary {
+background-color: #6366f1;
+color: white;
+transition: all 0.3s ease;
+}
+.btn-primary:hover {
+background-color: #4f46e5;
+}
+.nav-link {
+position: relative;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: -4px;
+left: 0;
+width: 0;
+height: 2px;
+background-color: #6366f1;
+transition: width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after {
+width: 100%;
+}
+</style>
 </head>
-<body>
-
-<!-- 🔹 Navbar -->
-<header>
-    <h1>🚀 slovakians</h1>
-    <nav>
-        <ul>
-            <li><a href="index.html">🏠 Home</a></li>
-            <li><a href="projects.html">📂 Projects</a></li>
-            <li><a href="about.html">👨‍💻 About</a></li>
-            <li><a href="status.html">🔵 Status</a></li>
-        </ul>
-    </nav>
-</header>
-
-<!-- 🎨 Hero Section -->
-<section class="hero">
-    <div class="hero-content">
-        <h2>Hey, I'm <span class="typed-text"></span> 👋</h2>
-        <p class="hero-subtitle">🚀 Full-Stack Developer | 🔥 Open Source Enthusiast | 🎨 UI/UX Designer</p>
-        <p>💻 Skilled in: <span>HTML, CSS, JavaScript, React, Python</span></p>
-        <a href="https://github.com/slovakians" class="btn hero-btn">🌟 Check My GitHub</a>
-    </div>
+<body id="top">
+<nav class="fixed top-0 left-0 w-full bg-white bg-opacity-95 z-50 border-b border-gray-200 shadow-lg">
+<div class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="flex items-center">
+<a href="#" class="text-2xl font-['Pacifico'] text-gray-900">syzdark</a>
+</div>
+<div class="flex items-center space-x-6">
+<a href="#top" class="nav-link active text-gray-900 hover:text-primary transition-colors">Home</a>
+<a href="#skills" class="nav-link text-gray-900 hover:text-primary transition-colors">Skills</a>
+<a href="#projects" class="nav-link text-gray-900 hover:text-primary transition-colors">Projects</a>
+<a href="#social" class="nav-link text-gray-900 hover:text-primary transition-colors">Social</a>
+</div>
+</div>
+</nav>
+<main>
+<!-- Homepage Hero Section -->
+<section class="min-h-screen pt-24 pb-16 flex flex-col justify-center items-center px-6">
+<div class="text-center max-w-3xl mx-auto">
+<h1 class="text-6xl md:text-7xl font-bold mb-8 text-gray-900">
+<span id="animated-text">syzdark</span><span class="cursor"></span>
+</h1>
+<p class="text-xl text-gray-600 mb-12 max-w-xl mx-auto">
+I'm a passionate full-stack developer creating elegant solutions to complex problems. Specializing in modern web technologies and clean, efficient code.
+</p>
+<a href="#projects" class="btn-primary px-8 py-4 rounded-button text-lg font-medium whitespace-nowrap inline-flex items-center gap-2">
+View Projects
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</span>
+</a>
+</div>
 </section>
-
-<!-- 📊 GitHub Stats -->
-<section class="github-stats">
-    <h2>📊 GitHub Stats</h2>
-    <div class="stats-grid">
-        <img src="https://github-readme-stats.vercel.app/api?username=slovakians&show_icons=true&theme=radical" alt="GitHub Stats">
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=slovakians&theme=tokyonight" alt="GitHub Streak">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=slovakians&layout=compact&theme=radical" alt="Most Used Languages">
-    </div>
+<!-- Projects Section -->
+<section id="skills" class="py-20 px-6 bg-white">
+<div class="container mx-auto max-w-7xl">
+<h2 class="text-4xl font-bold mb-16 text-center">My Skills</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="p-6 bg-gray-50 rounded-lg">
+<h3 class="text-xl font-semibold mb-4">Frontend Development</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-gray-700">HTML/CSS</span>
+<span class="text-primary">95%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 95%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-700">JavaScript</span>
+<span class="text-primary">90%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 90%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-700">React</span>
+<span class="text-primary">85%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-gray-50 rounded-lg">
+<h3 class="text-xl font-semibold mb-4">Backend Development</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-gray-700">Node.js</span>
+<span class="text-primary">88%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-700">Python</span>
+<span class="text-primary">82%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 82%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-700">MongoDB</span>
+<span class="text-primary">85%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<div class="p-6 bg-gray-50 rounded-lg">
+<h3 class="text-xl font-semibold mb-4">Other Skills</h3>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="text-gray-700">Git</span>
+<span class="text-primary">92%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 92%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-700">Docker</span>
+<span class="text-primary">80%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 80%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-gray-700">AWS</span>
+<span class="text-primary">78%</span>
+</div>
+<div class="h-2 bg-gray-200 rounded-full">
+<div class="h-full bg-primary rounded-full" style="width: 78%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<!-- 🌙 Dark Mode -->
-<section class="Dark">
-    <div class="dark-content">
-        <p>Made With <span>💓 By Joem</span></p>
-    </div>
+<section id="projects" class="py-20 px-6 bg-gray-50">
+<div class="container mx-auto max-w-7xl">
+<h2 class="text-4xl font-bold mb-16 text-center">My Projects</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project Card 1 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">E-Commerce Platform</h3>
+<p class="text-gray-600 mb-6">A full-featured online store built with React, Node.js, and MongoDB. Features include user authentication, product filtering, cart management, and payment processing.</p>
+<a href="https://github.com/syzdark/ecommerce-platform" class="inline-flex items-center gap-2 text-primary hover:text-white hover:bg-primary px-4 py-2 rounded-button transition-colors border border-primary whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</span>
+View on GitHub
+</a>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Weather Dashboard</h3>
+<p class="text-gray-600 mb-6">A responsive weather application that provides real-time forecasts using the OpenWeather API. Features include location search, 5-day forecasts, and interactive weather maps.</p>
+<a href="https://github.com/syzdark/weather-dashboard" class="inline-flex items-center gap-2 text-primary hover:text-white hover:bg-primary px-4 py-2 rounded-button transition-colors border border-primary whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</span>
+View on GitHub
+</a>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Task Management App</h3>
+<p class="text-gray-600 mb-6">A productivity tool built with Vue.js and Firebase. Features include task creation, due dates, priority levels, filtering, and user authentication with role-based permissions.</p>
+<a href="https://github.com/syzdark/task-manager" class="inline-flex items-center gap-2 text-primary hover:text-white hover:bg-primary px-4 py-2 rounded-button transition-colors border border-primary whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</span>
+View on GitHub
+</a>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Portfolio Generator</h3>
+<p class="text-gray-600 mb-6">A tool that helps developers create professional portfolios with minimal effort. Built with Next.js and Tailwind CSS, featuring customizable templates and GitHub integration.</p>
+<a href="https://github.com/syzdark/portfolio-generator" class="inline-flex items-center gap-2 text-primary hover:text-white hover:bg-primary px-4 py-2 rounded-button transition-colors border border-primary whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</span>
+View on GitHub
+</a>
+</div>
+</div>
+<!-- Project Card 5 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Markdown Blog Engine</h3>
+<p class="text-gray-600 mb-6">A lightweight blogging platform that uses Markdown for content creation. Built with Express.js and MongoDB, featuring syntax highlighting, image uploads, and tag management.</p>
+<a href="https://github.com/syzdark/markdown-blog" class="inline-flex items-center gap-2 text-primary hover:text-white hover:bg-primary px-4 py-2 rounded-button transition-colors border border-primary whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</span>
+View on GitHub
+</a>
+</div>
+</div>
+<!-- Project Card 6 -->
+<div class="project-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200">
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">Real-time Chat Application</h3>
+<p class="text-gray-600 mb-6">A messaging platform built with Socket.io and React. Features include private messaging, group chats, read receipts, online status indicators, and message encryption.</p>
+<a href="https://github.com/syzdark/realtime-chat" class="inline-flex items-center gap-2 text-primary hover:text-white hover:bg-primary px-4 py-2 rounded-button transition-colors border border-primary whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</span>
+View on GitHub
+</a>
+</div>
+</div>
+</div>
+</div>
 </section>
-
+<!-- Social Section -->
+<section id="social" class="py-20 px-6 bg-white">
+<div class="container mx-auto max-w-7xl">
+<h2 class="text-4xl font-bold mb-16 text-center">Connect With Me</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+    <!-- GitHub Card -->
+    <a href="https://github.com/syzdark" target="_blank" class="group">
+        <div class="bg-gray-50 rounded-lg p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
+            <div class="w-16 h-16 mx-auto mb-6 text-gray-800 group-hover:text-primary flex items-center justify-center">
+                <i class="ri-github-fill ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">GitHub</h3>
+            <p class="text-gray-600">Follow my open source projects and contributions</p>
+        </div>
+    </a>
+    <!-- Discord Card -->
+    <a href="https://discord.gg/syzdark" target="_blank" class="group">
+        <div class="bg-gray-50 rounded-lg p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
+            <div class="w-16 h-16 mx-auto mb-6 text-gray-800 group-hover:text-primary flex items-center justify-center">
+                <i class="ri-discord-fill ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">Discord Server</h3>
+            <p class="text-gray-600">Join our community of developers and designers</p>
+        </div>
+    </a>
+    <!-- YouTube Card -->
+    <a href="https://youtube.com/@syzdark" target="_blank" class="group">
+        <div class="bg-gray-50 rounded-lg p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-2">
+            <div class="w-16 h-16 mx-auto mb-6 text-gray-800 group-hover:text-primary flex items-center justify-center">
+                <i class="ri-youtube-fill ri-3x"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-4">YouTube</h3>
+            <p class="text-gray-600">Watch tutorials and development tips</p>
+        </div>
+    </a>
+</div>
+<!-- Social Stats -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+    <div class="bg-white rounded-lg p-6 text-center border border-gray-200 shadow-sm">
+        <div class="text-3xl font-bold text-primary mb-2">15.2K</div>
+        <div class="text-gray-600">GitHub Followers</div>
+    </div>
+    <div class="bg-white rounded-lg p-6 text-center border border-gray-200 shadow-sm">
+        <div class="text-3xl font-bold text-primary mb-2">8.5K</div>
+        <div class="text-gray-600">Discord Members</div>
+    </div>
+    <div class="bg-white rounded-lg p-6 text-center border border-gray-200 shadow-sm">
+        <div class="text-3xl font-bold text-primary mb-2">25.7K</div>
+        <div class="text-gray-600">YouTube Subscribers</div>
+    </div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white py-10 border-t border-gray-200">
+<div class="container mx-auto px-6 text-center">
+<p class="text-gray-600">© 2025 syzdark. All rights reserved.</p>
+</div>
+</footer>
+<!-- Admin Login Modal (Hidden by default) -->
+<div id="admin-login" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+<div class="bg-white p-8 rounded-lg shadow-xl max-w-md w-full border border-gray-200">
+<h2 class="text-2xl font-bold mb-6 text-center">Admin Login</h2>
+<form>
+<div class="mb-4">
+<label for="username" class="block text-sm font-medium mb-2">Username</label>
+<input type="text" id="username" class="w-full px-4 py-2 rounded border-none" placeholder="Enter your username">
+</div>
+<div class="mb-6">
+<label for="password" class="block text-sm font-medium mb-2">Password</label>
+<input type="password" id="password" class="w-full px-4 py-2 rounded border-none" placeholder="Enter your password">
+</div>
+<button type="submit" class="w-full btn-primary py-3 rounded-button font-medium whitespace-nowrap">Login</button>
+</form>
+<button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+<span class="w-6 h-6 flex items-center justify-center">
+<i class="ri-close-line"></i>
+</span>
+</button>
+</div>
+</div>
+<!-- Admin Dashboard (Hidden by default) -->
+<div id="admin-dashboard" class="hidden">
+<div class="container mx-auto px-6 py-12 pt-24">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-3xl font-bold">Project Management</h2>
+<div class="flex gap-4">
+<button id="toggle-view-btn" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-button whitespace-nowrap inline-flex items-center gap-2">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-eye-line"></i>
+</span>
+Toggle View
+</button>
+<button id="logout-btn" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-button whitespace-nowrap inline-flex items-center gap-2">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-logout-box-line"></i>
+</span>
+Logout
+</button>
+<button id="add-project-btn" class="btn-primary px-4 py-2 rounded-button whitespace-nowrap inline-flex items-center gap-2">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-add-line"></i>
+</span>
+Add New Project
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+<table class="w-full">
+<thead>
+<tr class="bg-gray-50">
+<th class="px-6 py-4 text-left">Project Title</th>
+<th class="px-6 py-4 text-left">Description</th>
+<th class="px-6 py-4 text-center">Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-t border-gray-200">
+<td class="px-6 py-4">E-Commerce Platform</td>
+<td class="px-6 py-4 text-gray-600">A full-featured online store built with React, Node.js...</td>
+<td class="px-6 py-4 text-center">
+<div class="flex justify-center gap-2">
+<button class="bg-blue-500 hover:bg-blue-600 p-2 rounded-button whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-edit-line"></i>
+</span>
+</button>
+<button class="bg-red-500 hover:bg-red-600 p-2 rounded-button whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-delete-bin-line"></i>
+</span>
+</button>
+</div>
+</td>
+</tr>
+<tr class="border-t border-gray-200">
+<td class="px-6 py-4">Weather Dashboard</td>
+<td class="px-6 py-4 text-gray-600">A responsive weather application that provides real-time...</td>
+<td class="px-6 py-4 text-center">
+<div class="flex justify-center gap-2">
+<button class="bg-blue-500 hover:bg-blue-600 p-2 rounded-button whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-edit-line"></i>
+</span>
+</button>
+<button class="bg-red-500 hover:bg-red-600 p-2 rounded-button whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-delete-bin-line"></i>
+</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Project Form Modal (Hidden by default) -->
+<div id="project-form-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+<div class="bg-white p-8 rounded-lg shadow-xl max-w-2xl w-full border border-gray-200">
+<h2 class="text-2xl font-bold mb-6">Add New Project</h2>
+<form>
+<div class="mb-4">
+<label for="project-title" class="block text-sm font-medium mb-2">Project Title</label>
+<input type="text" id="project-title" class="w-full px-4 py-2 rounded border-none" placeholder="Enter project title">
+</div>
+<div class="mb-4">
+<label for="project-description" class="block text-sm font-medium mb-2">Description</label>
+<textarea id="project-description" rows="4" class="w-full px-4 py-2 rounded border-none" placeholder="Enter project description"></textarea>
+</div>
+<div class="mb-4">
+<label for="github-url" class="block text-sm font-medium mb-2">GitHub URL</label>
+<input type="text" id="github-url" class="w-full px-4 py-2 rounded border-none" placeholder="Enter GitHub repository URL">
+</div>
+<div class="mb-6">
+<label for="project-image" class="block text-sm font-medium mb-2">Project Image URL (optional)</label>
+<input type="text" id="project-image" class="w-full px-4 py-2 rounded border-none" placeholder="Enter image URL">
+</div>
+<div class="flex justify-end gap-4">
+<button type="button" id="cancel-project" class="px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-button whitespace-nowrap">Cancel</button>
+<button type="submit" class="btn-primary px-4 py-2 rounded-button whitespace-nowrap">Save Project</button>
+</div>
+</form>
+</div>
+</div>
 <script>
-    var typed = new Typed(".typed-text", {
-        strings: ["a Developer", "a Programmer"],
-        typeSpeed: 80,
-        backSpeed: 50,
-        loop: true
-    });
+document.addEventListener('DOMContentLoaded', function() {
+// Admin login functionality
+const adminLoginBtn = document.getElementById('admin-login-btn');
+const adminLoginModal = document.getElementById('admin-login');
+const closeModalBtn = document.getElementById('close-modal');
+const loginForm = adminLoginModal.querySelector('form');
+const adminDashboard = document.getElementById('admin-dashboard');
+const mainContent = document.querySelector('main');
+const footer = document.querySelector('footer');
+const logoutBtn = document.getElementById('logout-btn');
+const toggleViewBtn = document.getElementById('toggle-view-btn');
+let projects = [
+{
+id: 1,
+title: 'E-Commerce Platform',
+description: 'A full-featured online store built with React, Node.js and MongoDB. Features include user authentication, product filtering, cart management, and payment processing.',
+githubUrl: 'https://github.com/syzdark/ecommerce-platform'
+},
+{
+id: 2,
+title: 'Weather Dashboard',
+description: 'A responsive weather application that provides real-time forecasts using the OpenWeather API. Features include location search, 5-day forecasts, and interactive weather maps.',
+githubUrl: 'https://github.com/syzdark/weather-dashboard'
+},
+{
+id: 3,
+title: 'Task Management App',
+description: 'A productivity tool built with Vue.js and Firebase. Features include task creation, due dates, priority levels, filtering, and user authentication with role-based permissions.',
+githubUrl: 'https://github.com/syzdark/task-manager'
+},
+{
+id: 4,
+title: 'Portfolio Generator',
+description: 'A tool that helps developers create professional portfolios with minimal effort. Built with Next.js and Tailwind CSS, featuring customizable templates and GitHub integration.',
+githubUrl: 'https://github.com/syzdark/portfolio-generator'
+},
+{
+id: 5,
+title: 'Markdown Blog Engine',
+description: 'A lightweight blogging platform that uses Markdown for content creation. Built with Express.js and MongoDB, featuring syntax highlighting, image uploads, and tag management.',
+githubUrl: 'https://github.com/syzdark/markdown-blog'
+},
+{
+id: 6,
+title: 'Real-time Chat Application',
+description: 'A messaging platform built with Socket.io and React. Features include private messaging, group chats, read receipts, online status indicators, and message encryption.',
+githubUrl: 'https://github.com/syzdark/realtime-chat'
+}
+];
+adminLoginBtn.addEventListener('click', function(e) {
+e.preventDefault();
+adminLoginModal.classList.remove('hidden');
+});
+closeModalBtn.addEventListener('click', function() {
+adminLoginModal.classList.add('hidden');
+});
+loginForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const username = document.getElementById('username').value;
+const password = document.getElementById('password').value;
+if (username === 'dark' && password === 'dark') {
+adminLoginModal.classList.add('hidden');
+mainContent.classList.add('hidden');
+footer.classList.add('hidden');
+adminDashboard.classList.remove('hidden');
+renderProjects();
+} else {
+const errorDiv = document.createElement('div');
+errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4';
+errorDiv.textContent = 'Invalid credentials. Please try again.';
+loginForm.appendChild(errorDiv);
+setTimeout(() => errorDiv.remove(), 3000);
+}
+});
+logoutBtn.addEventListener('click', function() {
+adminDashboard.classList.add('hidden');
+mainContent.classList.remove('hidden');
+footer.classList.remove('hidden');
+document.getElementById('username').value = '';
+document.getElementById('password').value = '';
+});
+toggleViewBtn.addEventListener('click', function() {
+if (mainContent.classList.contains('hidden')) {
+mainContent.classList.remove('hidden');
+footer.classList.remove('hidden');
+} else {
+mainContent.classList.add('hidden');
+footer.classList.add('hidden');
+}
+});
+function renderProjects() {
+const tbody = document.querySelector('tbody');
+tbody.innerHTML = '';
+projects.forEach(project => {
+const tr = document.createElement('tr');
+tr.className = 'border-t border-gray-200';
+tr.innerHTML = `
+<td class="px-6 py-4">${project.title}</td>
+<td class="px-6 py-4 text-gray-600">${project.description}</td>
+<td class="px-6 py-4 text-center">
+<div class="flex justify-center gap-2">
+<button onclick="editProject(${project.id})" class="bg-blue-500 hover:bg-blue-600 p-2 rounded-button text-white whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-edit-line"></i>
+</span>
+</button>
+<button onclick="deleteProject(${project.id})" class="bg-red-500 hover:bg-red-600 p-2 rounded-button text-white whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-delete-bin-line"></i>
+</span>
+</button>
+</div>
+</td>
+`;
+tbody.appendChild(tr);
+});
+}
+window.editProject = function(id) {
+const project = projects.find(p => p.id === id);
+if (project) {
+const projectForm = document.getElementById('project-form-modal');
+const titleInput = document.getElementById('project-title');
+const descInput = document.getElementById('project-description');
+const urlInput = document.getElementById('github-url');
+titleInput.value = project.title;
+descInput.value = project.description;
+urlInput.value = project.githubUrl;
+projectForm.classList.remove('hidden');
+projectForm.dataset.editId = id;
+const formTitle = projectForm.querySelector('h2');
+formTitle.textContent = 'Edit Project';
+}
+};
+window.deleteProject = function(id) {
+if (confirm('Are you sure you want to delete this project?')) {
+projects = projects.filter(p => p.id !== id);
+renderProjects();
+updateProjectsSection();
+}
+};
+function updateProjectsSection() {
+const projectsGrid = document.querySelector('#projects .grid');
+projectsGrid.innerHTML = '';
+projects.forEach(project => {
+const projectCard = document.createElement('div');
+projectCard.className = 'project-card bg-white rounded-lg overflow-hidden shadow-lg border border-gray-200';
+projectCard.innerHTML = `
+<div class="p-6">
+<h3 class="text-xl font-semibold mb-3">${project.title}</h3>
+<p class="text-gray-600 mb-6">${project.description}</p>
+<a href="${project.githubUrl}" class="inline-flex items-center gap-2 text-primary hover:text-white hover:bg-primary px-4 py-2 rounded-button transition-colors border border-primary whitespace-nowrap">
+<span class="w-5 h-5 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</span>
+View on GitHub
+</a>
+</div>
+`;
+projectsGrid.appendChild(projectCard);
+});
+}
+const projectForm = projectFormModal.querySelector('form');
+projectForm.addEventListener('submit', function(e) {
+e.preventDefault();
+const title = document.getElementById('project-title').value;
+const description = document.getElementById('project-description').value;
+const githubUrl = document.getElementById('github-url').value;
+if (!title || !description || !githubUrl) {
+const errorDiv = document.createElement('div');
+errorDiv.className = 'bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-4';
+errorDiv.textContent = 'Please fill in all fields.';
+projectForm.appendChild(errorDiv);
+setTimeout(() => errorDiv.remove(), 3000);
+return;
+}
+if (projectFormModal.dataset.editId) {
+const id = parseInt(projectFormModal.dataset.editId);
+const index = projects.findIndex(p => p.id === id);
+if (index !== -1) {
+projects[index] = { id, title, description, githubUrl };
+}
+} else {
+const newId = projects.length > 0 ? Math.max(...projects.map(p => p.id)) + 1 : 1;
+projects.push({ id: newId, title, description, githubUrl });
+}
+renderProjects();
+updateProjectsSection();
+projectFormModal.classList.add('hidden');
+projectForm.reset();
+delete projectFormModal.dataset.editId;
+const formTitle = projectFormModal.querySelector('h2');
+formTitle.textContent = 'Add New Project';
+const successDiv = document.createElement('div');
+successDiv.className = 'fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-6 py-3 rounded shadow-lg z-50';
+successDiv.textContent = projectFormModal.dataset.editId ? 'Project updated successfully!' : 'Project added successfully!';
+document.body.appendChild(successDiv);
+setTimeout(() => successDiv.remove(), 3000);
+});
+// Project management functionality
+const addProjectBtn = document.getElementById('add-project-btn');
+const projectFormModal = document.getElementById('project-form-modal');
+const cancelProjectBtn = document.getElementById('cancel-project');
+addProjectBtn.addEventListener('click', function() {
+const projectForm = document.getElementById('project-form-modal');
+const formTitle = projectForm.querySelector('h2');
+formTitle.textContent = 'Add New Project';
+projectForm.querySelector('form').reset();
+delete projectForm.dataset.editId;
+projectForm.classList.remove('hidden');
+});
+cancelProjectBtn.addEventListener('click', function() {
+projectFormModal.classList.add('hidden');
+});
+const phrases = ["syzdark", "Developer", "Designer"];
+let currentPhraseIndex = 0;
+let currentCharIndex = 0;
+let isDeleting = false;
+function typeEffect() {
+const currentPhrase = phrases[currentPhraseIndex];
+const animatedText = document.getElementById('animated-text');
+if (!animatedText) return;
+if (isDeleting) {
+animatedText.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+currentCharIndex--;
+} else {
+animatedText.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+currentCharIndex++;
+}
+let typingSpeed = isDeleting ? 100 : 200;
+if (!isDeleting && currentCharIndex === currentPhrase.length) {
+typingSpeed = 2000;
+isDeleting = true;
+} else if (isDeleting && currentCharIndex === 0) {
+isDeleting = false;
+currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+typingSpeed = 500;
+}
+setTimeout(typeEffect, typingSpeed);
+}
+typeEffect();
+});
+document.addEventListener('DOMContentLoaded', function() {
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId !== '#') {
+document.querySelector(targetId).scrollIntoView({
+behavior: 'smooth'
+});
+}
+});
+});
+});
 </script>
-
-<script>
-    function checkSession() {
-        let lastCheck = sessionStorage.getItem("lastVerification");
-        if (!lastCheck || Date.now() - parseInt(lastCheck) >= 600000) {
-            window.location.href = "verification.html"; // Redirect to verification page
-        }
-    }
-
-    setInterval(checkSession, 1000); // Check every second
-</script>
-
 </body>
 </html>
