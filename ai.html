@@ -94,12 +94,13 @@ Uptime <span class="w-2 h-2 bg-green-500 rounded-full"></span>
 <h3>Getting Started</h3>
 <p>Welcome to Nexus Labs API documentation. Here's everything you need to know on our api.</p>
 <h4 class="mt-6">Base URL</h4>
-<pre class="bg-gray-100 p-4 rounded-lg"><code>http://69.30.219.179:1407/</code></pre>
+<pre class="bg-gray-100 p-4 rounded-lg"><code>http://api.astral.ftp.sh:1407/</code></pre>
+<pre class="bg-gray-100 p-4 rounded-lg"><code>http://api.astraltech.org:1407//</code></pre>
 <h4 class="mt-6">Chat Endpoint</h4>
 <p>Send chat messages to the AI and receive responses.</p>
 <pre class="bg-gray-100 p-4 rounded-lg"><code>GET /ai?chat={message}
 // Example request
-fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
+fetch('http://api.astral.ftp.sh:1407/ai?chat=' + encodeURIComponent('Hello'))
 .then(response => response.text())
 .then(data => console.log(data));</code></pre>
 <h4 class="mt-6">Parameters</h4>
@@ -281,7 +282,7 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
 
   async function fetchStatus() {
     try {
-      const res = await fetch("http://69.30.219.179:1407/status");
+      const res = await fetch("http://api.astral.ftp.sh:1407/status");
       const data = await res.json();
 
       const statusTextEl = document.getElementById("statusText");
@@ -360,7 +361,7 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
 
   async function fetchUptime() {
     try {
-      const res = await fetch("http://69.30.219.179:1407/uptime");
+      const res = await fetch("http://api.astral.ftp.sh:1407/uptime");
       const data = await res.json();
       document.getElementById("uptimeText").textContent = `Uptime: ${formatUptime(data.uptime)}`;
     } catch (err) {
@@ -378,7 +379,7 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
 
   async function fetchUsage() {
     try {
-      const res = await fetch("http://69.30.219.179:1407/usage");
+      const res = await fetch("http://api.astral.ftp.sh:1407/usage");
       const data = await res.json();
       document.getElementById("usageText").innerHTML = `
         <strong>User Messages:</strong> ${data.userMessages}<br>
@@ -393,7 +394,7 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
 
   async function fetchStats() {
     try {
-      const res = await fetch("http://69.30.219.179:1407/stats");
+      const res = await fetch("http://api.astral.ftp.sh:1407/stats");
       const data = await res.json();
       document.getElementById("statsText").innerHTML = `
         <strong>API Calls:</strong> ${data.apiCalls}<br>
@@ -409,7 +410,7 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
 
   async function fetchPing() {
     try {
-      const res = await fetch("http://69.30.219.179:1407/ping");
+      const res = await fetch("http://api.astral.ftp.sh:1407/ping");
       const data = await res.json();
       document.getElementById("pingText").innerHTML = `
         <strong>Ping:</strong> ${data.ping}<br>
@@ -423,7 +424,7 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
 
   async function fetchMeta() {
     try {
-      const res = await fetch("http://69.30.219.179:1407/meta");
+      const res = await fetch("http://api.astral.ftp.sh:1407/meta");
       const data = await res.json();
       document.getElementById("metaText").innerHTML = `
         <strong>Node Version:</strong> ${data.nodeVersion}<br>
@@ -627,7 +628,7 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
               e.input.value = "";
               e.typing.classList.remove("hidden");
               try {
-                  const response = await fetch(`http://69.30.219.179:1407/ai?chat=${encodeURIComponent(n)}`);
+                  const response = await fetch(`http://api.astral.ftp.sh:1407/ai?chat=${encodeURIComponent(n)}`);
                   const data = await response.text();
                   e.typing.classList.add("hidden");
                   const clean = cleanResponse(data);
