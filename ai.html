@@ -264,34 +264,6 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
 </div>
 
 <script>
-  // Retrieve existing log from localStorage or initialize empty array
-  const uptimeLog = JSON.parse(localStorage.getItem('uptimeLog')) || [];
-
-  const logList = document.getElementById('uptime-log');
-
-  // Function to render the log
-  function renderLog() {
-    logList.innerHTML = '';
-    uptimeLog.forEach(entry => {
-      const li = document.createElement('li');
-      li.textContent = entry;
-      logList.appendChild(li);
-    });
-  }
-
-  // Function to add a new log entry
-  function addLogEntry() {
-    const timestamp = new Date().toLocaleString();
-    localStorage.setItem('uptimeLog', JSON.stringify(uptimeLog));
-    renderLog();
-  }
-
-  // Initial render
-  renderLog();
-
-  // Record uptime every minute (60000 milliseconds)
-  setInterval(addLogEntry, 60000);
-  
   let currentUptimePercentage = 100;
   let uptimeDecreaseInterval = null;
   let uptimeIncreaseInterval = null;
