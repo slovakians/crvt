@@ -1,246 +1,648 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Chat UI Only</title>
-  <style>
-    :root {
-      --primary: #10a37f;
-      --bg-dark: #202123;
-      --bg-light: #f7f7f8;
-      --border: #e5e7eb;
-      --text: #343541;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: system-ui, sans-serif; }
-    body { display: flex; height: 100vh; overflow: hidden; }
-    .sidebar {
-      width: 260px;
-      background: var(--bg-dark);
-      color: white;
-      display: flex;
-      flex-direction: column;
-    }
-    .new-chat {
-      padding: 12px;
-      margin: 12px;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .new-chat:hover { background: rgba(255,255,255,0.1); }
-    .chat-history {
-      flex: 1;
-      overflow-y: auto;
-      padding: 10px;
-    }
-    .chat-item {
-      padding: 10px;
-      margin-bottom: 5px;
-      border-radius: 6px;
-      cursor: pointer;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .chat-item:hover { background: rgba(255,255,255,0.1); }
-    .main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      background: white;
-    }
-    .tabs {
-      display: flex;
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--border);
-    }
-    .tab {
-      padding: 12px 16px;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-    }
-    .tab.active {
-      border-bottom: 2px solid var(--primary);
-      font-weight: bold;
-    }
-    .tab-content {
-      flex: 1;
-      overflow-y: auto;
-    }
-    .tab-panel {
-      display: none;
-      height: 100%;
-    }
-    .tab-panel.active {
-      display: flex;
-      flex-direction: column;
-    }
-    .chat-container {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-    }
-    .message {
-      display: flex;
-      margin-bottom: 20px;
-    }
-    .avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 2px;
-      margin-right: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-    .user-avatar { background: #d3d3d3; }
-    .content {
-      flex: 1;
-      line-height: 1.5;
-    }
-    .input-area {
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      border-top: 1px solid var(--border);
-    }
-    .input-field {
-      flex: 1;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      font-size: 14px;
-      height: 50px;
-      resize: none;
-    }
-    .send-btn {
-      padding: 12px 16px;
-      margin-left: 10px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .docs, .settings-tab {
-      padding: 20px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexusAI Chat</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#4f46e5',secondary:'#8b5cf6'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before{content:"\f3c2"}body{font-family:'Inter',sans-serif}.chat-container{height:calc(100vh - 4rem)}.chat-messages{height:calc(100% - 5rem);overflow-y:auto}.message pre{background:#f8f9fa;border-radius:8px;padding:1rem;overflow-x:auto}.message code{font-family:monospace;background:rgba(0,0,0,.05);padding:.1rem .3rem;border-radius:4px}.message ul{list-style:disc;padding-left:1.5rem}.message h1,.message h2,.message h3{font-weight:600;margin:.5rem 0}.message p{margin:.5rem 0}.typing-indicator span{animation:blink 1.4s infinite}@keyframes blink{0%,100%{opacity:.1}20%{opacity:1}}.message-appear{animation:fadeIn .3s}@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+</style>
 </head>
-<body>
-  <div class="sidebar">
-    <div class="new-chat" onclick="startNewChat()">+ New Chat</div>
-    <div class="chat-history" id="chat-history"></div>
-  </div>
-  <div class="main">
-    <div class="tabs">
-      <div class="tab active" data-tab="chat" onclick="switchTab('chat')">Chat</div>
-      <div class="tab" data-tab="docs" onclick="switchTab('docs')">Documentation</div>
-      <div class="tab" data-tab="settings" onclick="switchTab('settings')">Settings</div>
+<body class="bg-gray-50">
+<header class="bg-white shadow-sm">
+<div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+<div class="flex items-center gap-2">
+<span class="text-2xl text-primary">NexusAI</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="flex items-center gap-6">
+<a href="#" class="text-gray-700 hover:text-primary font-medium tab-link" data-tab="chat">Home</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium tab-link" data-tab="pricing">Pricing</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium tab-link" data-tab="docs">Documentation</a>
+<a href="#" class="text-gray-700 hover:text-primary font-medium flex items-center gap-1 tab-link" data-tab="uptime">
+Uptime <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+</a>
+</nav>
+<button class="text-gray-500 hover:text-gray-700 w-8 h-8 flex items-center justify-center">
+<i class="ri-moon-line ri-lg"></i>
+</button>
+<button class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-primary/90">Sign In</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto p-4">
+<div id="pricing" class="tab-content hidden">
+<div class="bg-white rounded-lg shadow-sm p-8">
+<h2 class="text-3xl font-semibold mb-8">NO PRICING API FREE AND PUBLIC</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+<h3 class="text-xl font-semibold mb-4">Basic</h3>
+<div class="text-4xl font-bold mb-4">$9<span class="text-lg text-gray-500">/mo</span></div>
+<ul class="space-y-3 mb-6">
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>1,000 API calls</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>Basic support</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>99.9% uptime</li>
+</ul>
+<button class="w-full bg-primary text-white px-4 py-2 !rounded-button">Get Started</button>
+</div>
+<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white px-3 py-1 rounded-full text-sm">Popular</div>
+<h3 class="text-xl font-semibold mb-4">Pro</h3>
+<div class="text-4xl font-bold mb-4">$29<span class="text-lg text-gray-500">/mo</span></div>
+<ul class="space-y-3 mb-6">
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>10,000 API calls</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>Priority support</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>99.99% uptime</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>Advanced features</li>
+</ul>
+<button class="w-full bg-primary text-white px-4 py-2 !rounded-button">Get Started</button>
+</div>
+<div class="border rounded-lg p-6 hover:shadow-lg transition-shadow">
+<h3 class="text-xl font-semibold mb-4">Enterprise</h3>
+<div class="text-4xl font-bold mb-4">Custom</div>
+<ul class="space-y-3 mb-6">
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>Unlimited API calls</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>24/7 support</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>99.999% uptime</li>
+<li class="flex items-center gap-2"><i class="ri-checkbox-circle-line text-green-500"></i>Custom features</li>
+</ul>
+<button class="w-full bg-primary text-white px-4 py-2 !rounded-button">Contact Sales</button>
+</div>
+</div>
+</div>
+</div>
+<div id="docs" class="tab-content hidden">
+<div class="bg-white rounded-lg shadow-sm p-8">
+<h2 class="text-3xl font-semibold mb-8">Documentation</h2>
+<div class="grid md:grid-cols-4 gap-8">
+<div class="col-span-1">
+<div class="space-y-2">
+<div class="font-medium text-lg mb-4">Quick Links</div>
+<a href="#" id="getting-started-link" class="block text-primary hover:underline">Getting Started</a>
+<a href="#" id="api-reference-link" class="block text-gray-600 hover:text-primary">API Reference</a>
+<a href="#" id="examples-link" class="block text-gray-600 hover:text-primary"></a>
+<a href="#" id="sdk-link" class="block text-gray-600 hover:text-primary"></a>
+<a href="#" id="best-practices-link" class="block text-gray-600 hover:text-primary"></a>
+</div>
+</div>
+<div class="col-span-3">
+<div id="getting-started-content" class="prose max-w-none">
+<h3>Getting Started</h3>
+<p>Welcome to Nexus Labs API documentation. Here's everything you need to know on our api.</p>
+<h4 class="mt-6">Base URL</h4>
+<pre class="bg-gray-100 p-4 rounded-lg"><code>http://69.30.219.179:1407/</code></pre>
+<h4 class="mt-6">Chat Endpoint</h4>
+<p>Send chat messages to the AI and receive responses.</p>
+<pre class="bg-gray-100 p-4 rounded-lg"><code>GET /ai?chat={message}
+// Example request
+fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
+.then(response => response.text())
+.then(data => console.log(data));</code></pre>
+<h4 class="mt-6">Parameters</h4>
+<table class="min-w-full mt-2">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-4 py-2 text-left">Parameter</th>
+<th class="px-4 py-2 text-left">Type</th>
+<th class="px-4 py-2 text-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="px-4 py-2">chat</td>
+<td class="px-4 py-2">string</td>
+<td class="px-4 py-2">The message to send to the AI</td>
+</tr>
+</tbody>
+</table>
+<h4 class="mt-6">Response</h4>
+<p>The API returns the AI's response as Almost like json Text.</p>
+<h4 class="mt-6">Rate Limits</h4>
+<p>The API is rate limited based on your plan:</p>
+<ul>
+<li>FREE:</li>
+<li>Requests Per Minute: 30</ul>
+<li>Requests Per Day: 1000</li>
+<li>Tokens Per Minute: 6000</li>
+<li>Tokens Per Day: 500000</li>
+<li>APPLY TO EVERYONE USING API VERY LIMITED</li>
+</ul>
+<h4 class="mt-6">Error Handling</h4>
+<p>The API uses standard HTTP response codes:</p>
+<ul>
+<li>200: Success</li>
+<li>429: Too Many Requests</li>
+<li>413: rate limited</li>
+<li>500: Server Error</li>
+</ul>
+</div>
+<div id="api-reference-content" class="prose max-w-none hidden">
+<h3>API Reference</h3>
+<p>Complete reference for all NexusAI API endpoints and features.</p>
+<h4 class="mt-6">Authentication</h4>
+<p>ALL API usage is free no Cost to use:</p>
+<pre class="bg-gray-100 p-4 rounded-lg"><code>ALL OF THIS IS CURRENTLY GETTING IMPLEMENTED</code></pre>
+<h4 class="mt-6">Chat API</h4>
+<div class="space-y-4">
+<div class="border rounded-lg p-4">
+<h5 class="font-semibold">POST /v1/chat/completions</h5>
+<p class="mt-2">Generate chat completions from the AI model.</p>
+<pre class="bg-gray-100 p-4 rounded-lg mt-4"><code>{
+"model": "nexus-3",
+"messages": [
+{"role": "user", "content": "Hello!"}
+],
+"temperature": 0.7
+}</code></pre>
+</div>
+<div class="border rounded-lg p-4">
+<h5 class="font-semibold">GET /v1/models</h5>
+<p class="mt-2">List available AI models.</p>
+<pre class="bg-gray-100 p-4 rounded-lg mt-4"><code>[
+{
+"id": "nexus-3",
+"type": "chat",
+"capabilities": ["text", "code"]
+}
+]</code></pre>
+</div>
+</div>
+<h4 class="mt-6">Rate Limits</h4>
+<table class="min-w-full mt-2">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-4 py-2 text-left">Plan</th>
+<th class="px-4 py-2 text-left">Requests/min</th>
+<th class="px-4 py-2 text-left">Tokens/request</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="px-4 py-2">Basic</td>
+<td class="px-4 py-2">60</td>
+<td class="px-4 py-2">4,096</td>
+</tr>
+<tr>
+<td class="px-4 py-2">Pro</td>
+<td class="px-4 py-2">120</td>
+<td class="px-4 py-2">8,192</td>
+</tr>
+</tbody>
+</table>
+<h4 class="mt-6">Error Codes</h4>
+<table class="min-w-full mt-2">
+<thead class="bg-gray-50">
+<tr>
+<th class="px-4 py-2 text-left">Code</th>
+<th class="px-4 py-2 text-left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="px-4 py-2">401</td>
+<td class="px-4 py-2">Invalid API key</td>
+</tr>
+<tr>
+<td class="px-4 py-2">429</td>
+<td class="px-4 py-2">Rate limit exceeded</td>
+</tr>
+<tr>
+<td class="px-4 py-2">500</td>
+<td class="px-4 py-2">Internal server error</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="uptime" class="tab-content hidden">
+  <div class="bg-white text-gray-900 rounded-lg shadow-sm p-8">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-3xl font-semibold">System Status</h2>
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+        <span class="font-medium text-green-700" id="systemStatusText">All Systems Operational</span>
+      </div>
     </div>
-    <div class="tab-content">
-      <div class="tab-panel active" id="chat-panel">
-        <div class="chat-container" id="chat-container"></div>
-        <div class="input-area">
-          <textarea class="input-field" id="user-input" placeholder="Type something..."></textarea>
-          <button class="send-btn" id="send-button">Send</button>
+
+    <div class="space-y-6">
+      <div class="border rounded-lg p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="font-semibold">API Endpoint</h3>
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+            <span id="uptimePercentage" class="text-sm text-green-700">100.00% uptime</span>
+          </div>
+        </div>
+        <div class="h-12 bg-gray-100 rounded-lg overflow-hidden">
+          <div id="uptimeBar" class="h-full bg-green-500/20 w-[100%] transition-all duration-300 ease-in-out"></div>
         </div>
       </div>
-      <div class="tab-panel" id="docs-panel">
-        <div class="docs">
-          <h1>Docs</h1>
-          <p>Put your documentation here.</p>
-        </div>
-      </div>
-      <div class="tab-panel" id="settings-panel">
-        <div class="settings-tab">
-          <h2>Settings</h2>
-          <p>Put your settings here.</p>
-        </div>
+
+      <div class="border rounded-lg p-6" id="statusCard">
+        <h3 class="font-semibold mb-4">Status</h3>
+        <div id="statusText" class="text-gray-600">Checking status...</div>
+        <div id="uptimeText" class="text-gray-600 mt-4">Fetching uptime...</div>
       </div>
     </div>
   </div>
 
-  <script>
-    let chats = [];
-    let currentChat = 0;
+  <div class="border rounded-lg p-6 mt-8" id="analyticsCard">
+    <h3 class="font-semibold mb-4">Analytics</h3>
+    <div id="usageText" class="text-gray-600 mb-4">Fetching usage data...</div>
+    <div id="statsText" class="text-gray-600 mb-4">Fetching stats...</div>
+    <div id="pingText" class="text-gray-600 mb-4">Checking latency...</div>
+    <div id="metaText" class="text-gray-600">Fetching meta information...</div>
+  </div>
+</div>
 
-    function startNewChat() {
-      chats.push([]);
-      currentChat = chats.length - 1;
-      updateChatHistory();
-      loadChat(currentChat);
+<script>
+  let currentUptimePercentage = 100;
+  let uptimeDecreaseInterval = null;
+  let uptimeIncreaseInterval = null;
+
+  function clearUptimeIntervals() {
+    if (uptimeDecreaseInterval) {
+      clearInterval(uptimeDecreaseInterval);
+      uptimeDecreaseInterval = null;
     }
+    if (uptimeIncreaseInterval) {
+      clearInterval(uptimeIncreaseInterval);
+      uptimeIncreaseInterval = null;
+    }
+  }
 
-    function updateChatHistory() {
-      const history = document.getElementById("chat-history");
-      history.innerHTML = "";
-      chats.forEach((chat, index) => {
-        const item = document.createElement("div");
-        item.classList.add("chat-item");
-        item.textContent = chat[0]?.content?.slice(0, 30) + "..." || "New Chat";
-        item.onclick = () => loadChat(index);
-        history.appendChild(item);
+  async function fetchStatus() {
+    try {
+      const res = await fetch("http://69.30.219.179:1407/status");
+      const data = await res.json();
+
+      const statusTextEl = document.getElementById("statusText");
+      const systemStatusTextEl = document.getElementById("systemStatusText");
+
+      if (data.status === '✅ OK') {
+        clearUptimeIntervals();
+        uptimeIncreaseInterval = setInterval(increaseUptime, 100);
+
+        systemStatusTextEl.innerText = "All Systems Operational";
+        systemStatusTextEl.classList.remove("text-red-600");
+        systemStatusTextEl.classList.add("text-green-700");
+
+        statusTextEl.innerHTML = `
+          <strong class="text-green-600">${data.status}</strong><br>
+          <strong>Server Time:</strong> ${new Date(data.serverTime).toLocaleString()}<br>
+          <strong>Sessions:</strong> ${data.totalSessions}<br>
+          <strong>Messages:</strong> ${data.totalMessages}<br>
+          <strong>API Calls:</strong> ${data.apiCalls}<br>
+          <strong>Memory Usage:</strong> ${data.memoryUsageMB} MB<br>
+          <strong>Uptime:</strong> ${formatUptime(data.uptimeSeconds)}
+        `;
+      } else {
+        handleAPIError(data.status || "❌ Unknown status");
+      }
+    } catch (err) {
+      handleAPIError("⚠️ Status fetch failed");
+      console.error("Status fetch failed:", err);
+    }
+  }
+
+  function handleAPIError(message) {
+    clearUptimeIntervals();
+    decreaseUptime(); // Drop instantly
+    uptimeDecreaseInterval = setInterval(decreaseUptime, 10000); // Continue every 10s
+
+    const systemStatus = document.getElementById("systemStatusText");
+    systemStatus.innerText = "⚠️ API is Down";
+    systemStatus.classList.remove("text-green-700");
+    systemStatus.classList.add("text-red-600");
+
+    document.getElementById("statusText").innerHTML = `<span class="text-red-600">${message}</span>`;
+  }
+
+  function decreaseUptime() {
+    if (currentUptimePercentage > 0) {
+      currentUptimePercentage -= 0.2;
+      updateUptimeDisplay();
+    } else {
+      clearInterval(uptimeDecreaseInterval);
+    }
+  }
+
+  function increaseUptime() {
+    if (currentUptimePercentage < 100) {
+      currentUptimePercentage += 0.1;
+      updateUptimeDisplay();
+    } else {
+      clearInterval(uptimeIncreaseInterval);
+    }
+  }
+
+  function updateUptimeDisplay() {
+    const uptimeEl = document.getElementById("uptimePercentage");
+    const uptimeBar = document.getElementById("uptimeBar");
+
+    currentUptimePercentage = Math.max(0, Math.min(100, currentUptimePercentage));
+    const percent = currentUptimePercentage.toFixed(2);
+    uptimeEl.innerText = `${percent}% uptime`;
+    uptimeBar.style.width = `${percent}%`;
+
+    // Toggle class based on percent
+    uptimeBar.classList.remove("bg-green-500/20", "bg-red-500/20");
+    uptimeBar.classList.add(currentUptimePercentage < 30 ? "bg-red-500/20" : "bg-green-500/20");
+  }
+
+  async function fetchUptime() {
+    try {
+      const res = await fetch("http://69.30.219.179:1407/uptime");
+      const data = await res.json();
+      document.getElementById("uptimeText").textContent = `Uptime: ${formatUptime(data.uptime)}`;
+    } catch (err) {
+      document.getElementById("uptimeText").textContent = "⚠️ Error fetching uptime";
+      console.error("Uptime fetch failed:", err);
+    }
+  }
+
+  function formatUptime(seconds) {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+    return `${h}h ${m}m ${s}s`;
+  }
+
+  async function fetchUsage() {
+    try {
+      const res = await fetch("http://69.30.219.179:1407/usage");
+      const data = await res.json();
+      document.getElementById("usageText").innerHTML = `
+        <strong>User Messages:</strong> ${data.userMessages}<br>
+        <strong>AI Replies:</strong> ${data.aiReplies}<br>
+        <strong>Total Messages:</strong> ${data.total}
+      `;
+    } catch (err) {
+      document.getElementById("usageText").textContent = "⚠️ Error fetching usage data";
+      console.error("Usage fetch failed:", err);
+    }
+  }
+
+  async function fetchStats() {
+    try {
+      const res = await fetch("http://69.30.219.179:1407/stats");
+      const data = await res.json();
+      document.getElementById("statsText").innerHTML = `
+        <strong>API Calls:</strong> ${data.apiCalls}<br>
+        <strong>Chat Sessions:</strong> ${data.chatSessions}<br>
+        <strong>Total Messages:</strong> ${data.totalMessages}<br>
+        <strong>Uptime:</strong> ${formatUptime(data.uptime)}
+      `;
+    } catch (err) {
+      document.getElementById("statsText").textContent = "⚠️ Error fetching stats data";
+      console.error("Stats fetch failed:", err);
+    }
+  }
+
+  async function fetchPing() {
+    try {
+      const res = await fetch("http://69.30.219.179:1407/ping");
+      const data = await res.json();
+      document.getElementById("pingText").innerHTML = `
+        <strong>Ping:</strong> ${data.ping}<br>
+        <strong>Timestamp:</strong> ${new Date(data.timestamp).toLocaleString()}
+      `;
+    } catch (err) {
+      document.getElementById("pingText").textContent = "⚠️ Error fetching ping data";
+      console.error("Ping fetch failed:", err);
+    }
+  }
+
+  async function fetchMeta() {
+    try {
+      const res = await fetch("http://69.30.219.179:1407/meta");
+      const data = await res.json();
+      document.getElementById("metaText").innerHTML = `
+        <strong>Node Version:</strong> ${data.nodeVersion}<br>
+        <strong>Platform:</strong> ${data.platform}<br>
+        <strong>CPU Count:</strong> ${data.cpuCount}<br>
+        <strong>Architecture:</strong> ${data.arch}<br>
+        <strong>Memory Usage:</strong> ${data.memory.rssMB} MB RSS / ${data.memory.heapMB} MB Heap<br>
+        <strong>Started At:</strong> ${new Date(data.startedAt).toLocaleString()}
+      `;
+    } catch (err) {
+      document.getElementById("metaText").textContent = "⚠️ Error fetching meta data";
+      console.error("Meta fetch failed:", err);
+    }
+  }
+
+  function fetchAnalytics() {
+    fetchUsage();
+    fetchStats();
+    fetchPing();
+    fetchMeta();
+  }
+
+  fetchStatus();
+  fetchUptime();
+  fetchAnalytics();
+
+  setInterval(() => {
+    fetchStatus();
+    fetchUptime();
+    fetchAnalytics();
+  }, 30000);
+</script>
+
+
+</div>
+</div>
+</div>
+</div>
+<div class="flex h-full gap-6" id="chat">
+<div class="w-64 hidden md:block">
+<div class="flex items-center justify-between mb-6">
+<button class="bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-primary/90 flex items-center gap-2">
+<i class="ri-add-line"></i>New Chat
+</button>
+</div>
+<div id="chatList" class="space-y-1"></div>
+</div>
+<div class="flex-1 bg-white rounded-lg shadow-sm overflow-hidden chat-container">
+<div class="chat-messages p-6 space-y-6">
+<div class="message flex">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+<i class="ri-robot-line text-primary"></i>
+</div>
+<div class="flex-1">
+<div class="bg-gray-100 rounded-lg p-4 message-appear">
+<p>Hi! I'm NexusAI, your AI assistant. How can I help you today?</p>
+</div>
+</div>
+</div>
+<div id="typingIndicator" class="message flex hidden">
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+<i class="ri-robot-line text-primary"></i>
+</div>
+<div class="flex-1">
+<div class="bg-gray-100 rounded-lg p-4">
+<div class="typing-indicator flex gap-1">
+<span>•</span><span>•</span><span>•</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t p-4">
+<div class="flex items-center gap-2">
+<div class="flex-1 relative">
+<input type="text" id="chatInput" class="w-full bg-gray-100 rounded-full py-3 px-4 border-none" placeholder="Type your message...">
+</div>
+<button id="sendButton" class="bg-primary text-white w-10 h-10 !rounded-full flex items-center justify-center hover:bg-primary/90">
+<i class="ri-send-plane-fill"></i>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const e = {
+          input: document.getElementById("chatInput"),
+          send: document.getElementById("sendButton"),
+          messages: document.querySelector(".chat-messages"),
+          typing: document.getElementById("typingIndicator")
+      };
+  
+      const docLinks = {
+          'getting-started': {
+              link: document.getElementById('getting-started-link'),
+              content: document.getElementById('getting-started-content')
+          },
+          'api-reference': {
+              link: document.getElementById('api-reference-link'),
+              content: document.getElementById('api-reference-content')
+          }
+      };
+  
+      function switchDocContent(contentId) {
+          Object.values(docLinks).forEach(({ link, content }) => {
+              if (link && content) {
+                  content.classList.add('hidden');
+                  link.classList.remove('text-primary');
+                  link.classList.add('text-gray-600');
+              }
+          });
+          if (docLinks[contentId]) {
+              docLinks[contentId].content.classList.remove('hidden');
+              docLinks[contentId].link.classList.remove('text-gray-600');
+              docLinks[contentId].link.classList.add('text-primary');
+          }
+      }
+  
+      docLinks['getting-started'].link.addEventListener('click', (event) => {
+          event.preventDefault();
+          switchDocContent('getting-started');
       });
-    }
-
-    function loadChat(index) {
-      currentChat = index;
-      const container = document.getElementById("chat-container");
-      container.innerHTML = "";
-      chats[index].forEach(msg => displayMessage(msg.content, msg.role));
-      switchTab("chat");
-    }
-
-    function displayMessage(content, role) {
-      const container = document.getElementById("chat-container");
-      const msg = document.createElement("div");
-      msg.classList.add("message");
-      const avatar = document.createElement("div");
-      avatar.classList.add("avatar", role === 'user' ? "user-avatar" : "ai-avatar");
-      avatar.textContent = role === 'user' ? "You" : "Bot";
-      const contentDiv = document.createElement("div");
-      contentDiv.classList.add("content");
-      contentDiv.textContent = content;
-      msg.appendChild(avatar);
-      msg.appendChild(contentDiv);
-      container.appendChild(msg);
-      container.scrollTop = container.scrollHeight;
-    }
-
-    async function sendMessage() {
-      const input = document.getElementById("user-input");
-      const text = input.value.trim();
-      if (!text) return;
-      
-      // Display user message
-      chats[currentChat].push({ role: 'user', content: text });
-      displayMessage(text, 'user');
-      input.value = '';
-
-      // Send message to backend AI API
-      const response = await fetch(`http://69.30.219.179:1407/ai?chat=${encodeURIComponent(text)}`);
-      const data = await response.json();
-      
-      // Display AI response
-      const aiReply = data.response || "No response from AI";
-      chats[currentChat].push({ role: 'assistant', content: aiReply });
-      displayMessage(aiReply, 'assistant');
-    }
-
-    function switchTab(tab) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
-      document.getElementById(`${tab}-panel`).classList.add('active');
-    }
-
-    document.getElementById("send-button").addEventListener("click", sendMessage);
-
-    // Start
-    startNewChat();
-  </script>
+  
+      docLinks['api-reference'].link.addEventListener('click', (event) => {
+          event.preventDefault();
+          switchDocContent('api-reference');
+      });
+  
+      const tabs = document.querySelectorAll('.tab-link');
+      const contents = document.querySelectorAll('.tab-content');
+      const chatSection = document.getElementById('chat');
+  
+      function switchTab(tabId) {
+          contents.forEach(content => content.classList.add('hidden'));
+          chatSection.classList.add('hidden');
+          if (tabId === 'chat') {
+              chatSection.classList.remove('hidden');
+          } else {
+              document.getElementById(tabId).classList.remove('hidden');
+          }
+  
+          tabs.forEach(tab => {
+              tab.classList.toggle('text-primary', tab.dataset.tab === tabId);
+          });
+      }
+  
+      tabs.forEach(tab => {
+          tab.addEventListener('click', (e) => {
+              e.preventDefault();
+              switchTab(tab.dataset.tab);
+          });
+      });
+  
+      switchTab('chat');
+  
+      function userMessage(text) {
+          const s = document.createElement("div");
+          s.className = "message flex justify-end";
+          s.innerHTML = `
+              <div class="flex-1">
+                  <div class="bg-primary/10 rounded-lg p-4 ml-12 message-appear">
+                      <p>${text}</p>
+                  </div>
+              </div>
+              <div class="w-8 h-8 flex items-center justify-center bg-primary rounded-full ml-4">
+                  <i class="ri-user-line text-white"></i>
+              </div>`;
+          e.messages.appendChild(s);
+          e.messages.scrollTop = e.messages.scrollHeight;
+      }
+  
+      function botMessage(text) {
+          const s = document.createElement("div");
+          s.className = "message flex";
+          s.innerHTML = `
+              <div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full mr-4">
+                  <i class="ri-robot-line text-primary"></i>
+              </div>
+              <div class="flex-1">
+                  <div class="bg-gray-100 rounded-lg p-4 message-appear">${text}</div>
+              </div>`;
+          e.messages.appendChild(s);
+          e.messages.scrollTop = e.messages.scrollHeight;
+      }
+  
+      function cleanResponse(raw) {
+          try {
+              const parsed = JSON.parse(raw);
+              return parsed.response.replace(/\\n/g, "<br>");
+          } catch {
+              return raw.replace(/\\n/g, "<br>").replace(/^["{]+|["}]+$/g, '');
+          }
+      }
+  
+      async function handleSend() {
+          const n = e.input.value.trim();
+          if (n) {
+              userMessage(n);
+              e.input.value = "";
+              e.typing.classList.remove("hidden");
+              try {
+                  const response = await fetch(`http://69.30.219.179:1407/ai?chat=${encodeURIComponent(n)}`);
+                  const data = await response.text();
+                  e.typing.classList.add("hidden");
+                  const clean = cleanResponse(data);
+                  botMessage(clean);
+              } catch {
+                  e.typing.classList.add("hidden");
+                  botMessage("Sorry, I'm having trouble connecting right now. Please try again.");
+              }
+          }
+      }
+  
+      e.send.addEventListener("click", handleSend);
+      e.input.addEventListener("keypress", (t) => {
+          if (t.key === "Enter") handleSend();
+      });
+  });
+  </script>  
 </body>
 </html>
