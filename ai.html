@@ -628,7 +628,7 @@ fetch('http://api.astral.ftp.sh:1407/ai?chat=' + encodeURIComponent('Hello'))
               e.input.value = "";
               e.typing.classList.remove("hidden");
               try {
-                  const response = await fetch(`http://api.astral.ftp.sh:1407/ai?chat=${encodeURIComponent(n)}`);
+                  const response = await fetch(`api.astral.ftp.sh:1407/ai?chat=${encodeURIComponent(n)}`);
                   const data = await response.text();
                   e.typing.classList.add("hidden");
                   const clean = cleanResponse(data);
