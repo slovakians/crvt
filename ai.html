@@ -282,7 +282,6 @@ fetch('http://69.30.219.179:1407/ai?chat=' + encodeURIComponent('Hello'))
   // Function to add a new log entry
   function addLogEntry() {
     const timestamp = new Date().toLocaleString();
-    uptimeLog.push(`Uptime recorded at ${timestamp}`);
     localStorage.setItem('uptimeLog', JSON.stringify(uptimeLog));
     renderLog();
   }
