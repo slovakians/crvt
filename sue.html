@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landy Sue Detector</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#10b981'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #f9fafb;
+}
+.input-container input:focus {
+outline: none;
+box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+}
+.response-container {
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+opacity: 0;
+}
+.response-container.show {
+max-height: 500px;
+opacity: 1;
+}
+.clear-button {
+opacity: 0;
+transition: opacity 0.3s ease;
+pointer-events: none;
+}
+.clear-button.show {
+opacity: 1;
+pointer-events: auto;
+}
+</style>
+</head>
+<body>
+<div class="min-h-screen flex flex-col items-center justify-center p-4">
+<div class="w-full max-w-3xl mx-auto text-center">
+<h1 class="text-4xl md:text-5xl font-bold mb-8 text-gray-800">
+<span class="font-['Pacifico'] text-primary">logo</span>
+<span class="ml-2">Detector</span>
+</h1>
+<p class="text-lg text-gray-600 mb-10 max-w-xl mx-auto">
+This Is a website that if u type the name of the Person u can see there lawsuites
+</p>
+<div class="input-container relative mb-8 max-w-xl mx-auto">
+<input
+type="text"
+id="textInput"
+class="w-full px-6 py-4 text-xl bg-white border border-gray-200 rounded-lg shadow-sm focus:border-primary transition-all"
+placeholder="Type here..."
+>
+<button
+id="clearButton"
+class="clear-button absolute right-4 top-1/2 transform -translate-y-1/2 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600 !rounded-button"
+>
+<i class="ri-close-line ri-lg"></i>
+</button>
+</div>
+<div id="responseContainer" class="response-container bg-white border border-gray-200 rounded-lg shadow-md p-8 max-w-2xl mx-auto">
+<div class="flex flex-col items-center">
+<div class="w-20 h-20 flex items-center justify-center bg-red-100 rounded-full mb-6">
+<i class="ri-alarm-warning-fill ri-2x text-red-500"></i>
+</div>
+<h2 class="text-2xl font-bold text-gray-800 mb-4">Legal Notice</h2>
+<div class="text-left w-full">
+<p class="text-gray-700 mb-4">
+PERSONAL INJURY CLAIM NOTICE: This document outlines the basic structure of a personal injury claim related to the incident involving "landy".
+</p>
+<div class="space-y-6">
+<div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+<h3 class="font-semibold text-gray-800 mb-2">Claim Details:</h3>
+<ul class="text-gray-700 space-y-2">
+<li><span class="font-medium">Claim Number:</span> PI-2025-05-05-001</li>
+<li><span class="font-medium">Filing Date:</span> May 5, 2025</li>
+<li><span class="font-medium">Jurisdiction:</span> State Civil Court</li>
+<li><span class="font-medium">Claimant:</span> Si oem</li>
+<li><span class="font-medium">Defendant:</span> FIl Landy</li>
+<li><span class="font-medium">Insurance Ref:</span> LCI-789456</li>
+</ul>
+</div>
+<div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+<h3 class="font-semibold text-gray-800 mb-2">Nature of Incident:</h3>
+<ul class="text-gray-700 space-y-2 list-decimal pl-4">
+<li>Date of Incident: NOT TO BE DISCLOSED</li>
+<li>Location: Pob. Sierra Bullones, Bohol</li>
+<li>Type of Injury: </li>
+<li>Cause: Gi Tandayan ug Gi tod sa gawas sa hapin</li>
+</ul>
+</div>
+<div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+<h3 class="font-semibold text-gray-800 mb-2">Damages Claimed:</h3>
+<ul class="text-gray-700 space-y-2">
+<li><span class="font-medium">MLBB AFK:</span> $1.2M</li>
+<li><span class="font-medium">AFK AND LOST:</span> $10T (TRILLION)</li>
+<li><span class="font-medium">Pain & Suffering:</span> To be determined</li>
+<li><span class="font-medium">MLBB AFK & BANNED FROM RANK Costs:</span> Estimated $100Q (QUADRILLION)</li>
+</ul>
+</div>
+<div class="bg-gray-50 p-4 rounded-md border border-gray-200 mt-4">
+<h3 class="font-semibold text-gray-800 mb-2">Supporting Evidence:</h3>
+<ul class="text-gray-700 space-y-2">
+<li><span class="font-medium">Medical Records:</span> MObile Legends Center HQ</li>
+<li><span class="font-medium">Witness Statements:</span> 3 Teamates and the enemy team</li>
+<li><span class="font-medium">Incident Report:</span> Filed on April 15, 2025</li>
+<li><span class="font-medium">Photos:</span> NONE</li>
+</ul>
+</div>
+<p class="text-gray-700 mt-6 text-sm italic">
+This Is Just A joke
+</p>
+</div>
+<div class="flex justify-center">
+<button id="dismissButton" class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-button font-medium transition-colors whitespace-nowrap">
+Dismiss Notice
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-auto pt-10 w-full text-center text-gray-500 text-sm">
+<p>© 2025 Sue Detector. This is a demo website.</p>
+<p class="mt-1">Created on May 5, 2025</p>
+</footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const textInput = document.getElementById('textInput');
+const responseContainer = document.getElementById('responseContainer');
+const clearButton = document.getElementById('clearButton');
+const dismissButton = document.getElementById('dismissButton');
+function checkInput() {
+const inputValue = textInput.value.toLowerCase().trim();
+// Show/hide clear button
+if (inputValue.length > 0) {
+clearButton.classList.add('show');
+} else {
+clearButton.classList.remove('show');
+}
+// Check for "landy"
+if (inputValue === 'landy') {
+responseContainer.classList.add('show');
+} else {
+responseContainer.classList.remove('show');
+}
+}
+function clearInput() {
+textInput.value = '';
+clearButton.classList.remove('show');
+responseContainer.classList.remove('show');
+textInput.focus();
+}
+textInput.addEventListener('input', checkInput);
+clearButton.addEventListener('click', clearInput);
+dismissButton.addEventListener('click', function() {
+responseContainer.classList.remove('show');
+});
+});
+</script>
+</body>
+</html>
